@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin</title>
+<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>
+				Admin <small>Gestion des projets</small>
+			</h1>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2>Liste des projets</h2>
+			</div>
+			<div class="panel-body">
+				<ul id="project-list" class="list-group">
+
+				</ul>
+			</div>
+		</div>
+
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addProject">Nouveau projet</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="addProject" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Nouveau projet</h4>
+					</div>
+					<div class="modal-body">
+						<form id="form_add" role="form">
+							<div class="form-group">
+								<label for="name">Nom:</label> <input type="text" class="form-control" id="project_name" name="name" placeholder="Nom du projet">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="addProject();">Créer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- REMOVE PROJECT -->
+		<div class="modal fade" id="remove" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Voulez-vous supprimer ce projet ?</h4>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer" style="text-align: center;">
+						<button type="button" class="btn btn-primary" onclick="removeProject();">Oui</button>
+						<button type="button" class="btn btn-default" data-dismiss="remove">Annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		var curProjectKey;
+
+		$(document).ready(function() {
+			refreshProjects();
+		});
+
+		function addProject() {
+			$.post('/admin/projects/add', $('#form_add').serialize()).done(function(project) {
+				addProjectItem(project);
+			});
+			$('#form_add input').val('');
+			$('#addProject').modal('hide');
+		}
+
+		function refreshProjects() {
+			$.get("/projects/list", function(projects) {
+				$('#project-list').empty();
+				$.each(projects, function(i, project) {
+					addProjectItem(project);
+				});
+			});
+		}
+
+		function setCurrentProject(key) {
+			curProjectKey = key;
+		}
+
+		function removeProject() {
+			$.post('/admin/projects/remove/' + curProjectKey).done(function() {
+				refreshProjects();
+			});
+			$('#remove').modal('hide');
+		}
+
+		function addProjectItem(project) {
+			var $li = $('<li>', {
+				class : 'list-group-item'
+			});
+			var $row = $('<div>', {
+				class : 'row'
+			});
+			var $right = $('<div>', {
+				class : 'col-md-10',
+				text : project.name
+			});
+			var $left = $('<div>', {
+				class : 'col-md-2'
+			});
+			$left.append($('<a>', {
+				class : 'btn btn-info btn-sm',
+				href : '/admin/projects/edit/' + project.key,
+				text : 'Editer'
+			}));
+			$left.append($('<a>', {
+				class : 'btn btn-danger btn-sm',
+				'data-toggle' : 'modal',
+				'data-target' : '#remove',
+				onclick : 'setCurrentProject(' + project.key + ')',
+				text : 'Supprimer'
+			}));
+			$row.append($right);
+			$row.append($left);
+			$li.append($row);
+			$('#project-list').append($li);
+		}
+	</script>
+</body>
+</html>
