@@ -150,6 +150,7 @@ exports.editSlide = function(req, res) {
 				slide.name = req.body.name;
 				slide.description = req.body.description;
 				slide.image = req.body.image;
+				slide.miniature = req.body.miniature;
 				slide.order = i;
 			}
 		}

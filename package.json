@@ -8,10 +8,28 @@
   "dependencies": {
     "express": "3.2.6",
     "ejs": "*",
-    "mongoose" : "~3.8.1",
-    "passport" : "~0.1.17",
-    "passport-local" : "~0.1.6",
-    "connect-flash" : "~0.1.1",
-    "bcrypt-nodejs" : "latest"
-  }
+    "mongoose": "~3.8.1",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs": "latest"
+  },
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alexislargaiolli/cometsens.git"
+  },
+  "keywords": [
+    "communication",
+    "webdesign",
+    "gam"
+  ],
+  "author": "Alexis Largaiolli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexislargaiolli/cometsens/issues"
+  },
+  "homepage": "https://github.com/alexislargaiolli/cometsens"
 }

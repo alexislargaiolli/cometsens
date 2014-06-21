@@ -28,7 +28,7 @@
 						<ul class="media-list">
 							<% project.slides.forEach( function (slide){ %>
 							<li class="media slide-list-item" onclick='javascript:selectSlide(<%= slide.order %>);'>
-							<a class="pull-left" href="#"> <img style="width: 64px; height: 64px;" class="media-object" src="<%= slide.image %>">
+							<a class="pull-left" href="#"> <img style="width: 64px; height: 64px;" class="media-object" src="<%= slide.miniature %>">
 							</a>
 								<div class="media-body">
 									<h4 class="media-heading"><%= slide.name %></h4>

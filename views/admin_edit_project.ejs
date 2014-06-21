@@ -167,6 +167,7 @@
 							<label for="name">Nom:</label> <input type="text" class="form-control" id="slide_name" name="name" placeholder="Nom du slide"> <label for="description">Description:</label>
 							<textarea class="form-control" id="slide_desc" name="description" placeholder="Description du slide"></textarea>
 							<label for="image">Image(url):</label> <input type="text" class="form-control" id="slide_image" name="image" placeholder="Image url">
+							<label for="miniature">Miniature(url):</label> <input type="text" class="form-control" id="slide_miniature" name="miniature" placeholder="Miniature url">
 						</div>
 					</form>
 				</div>
@@ -335,6 +336,7 @@
 			$('#slide_name').val(curSlide.name);
 			$('#slide_desc').val(curSlide.description);
 			$('#slide_image').val(curSlide.image);
+			$('#slide_miniature').val(curSlide.miniature);			
 		}
 		
 		function setCurrentLink(i) {

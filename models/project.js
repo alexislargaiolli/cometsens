@@ -12,6 +12,7 @@ var projectSchema = new Schema({
 		name : String,
 		description : String,
 		image : String,
+		miniature : String,
 		order : Number
 	} ]
 });
