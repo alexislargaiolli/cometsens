@@ -6,7 +6,7 @@ var express = require('express'), routes = require('./routes'), http = require('
 
 var app = express();
 app.mongoose = require('mongoose');
-app.mongoose.connect(configDB.url);
+app.mongoose.connect(configDB.url, {user : 'admin', pass:'_jWzBKmp3JTQ'});
 
 // all environments
 app.set('port', process.env.PORT || 3000);

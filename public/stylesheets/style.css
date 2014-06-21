@@ -90,6 +90,7 @@ a {
 
 #bt-fb:hover{
 	background-image: url("/img/facebook-on.png");
+	cursor:pointer;
 }
 
 #bt-vi{
@@ -99,19 +100,24 @@ a {
 }
 
 #bt-vi:hover{
-	background-image: url("/img/viadeo-on.png");	
+	background-image: url("/img/viadeo-on.png");
+	cursor:pointer;	
 }
 
 #header-bt-contact{
 	background-color:#ff4053;
 }
 
-#header-bt-contact a{
-	color:#fff;
+#header-bt-contact:hover{
+	background-color:#fff;
 }
 
+#header-bt-contact:hover a{
+	color:#ff4053;
+	cursor:pointer;
+}
 
-#header-bt-contact a:hover{
+#header-bt-contact a{
 	color:#fff;
 }
 
