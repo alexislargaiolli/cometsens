@@ -2,14 +2,29 @@
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path'), passport = require('passport'), flash = require('connect-flash'), configDB = require('./config/database.js');
+var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path'), passport = require('passport'), flash = require('connect-flash');//, configDB = require('./config/database.js');
 
 var app = express();
 app.mongoose = require('mongoose');
-app.mongoose.connect(configDB.url, {user : 'admin', pass:'_jWzBKmp3JTQ'});
+//app.mongoose.connect(configDB.url, {user : 'admin', pass:'_jWzBKmp3JTQ'});
+
+//default to a 'localhost' configuration:
+var connection_string = 'localhost/cometsens';
+// if OPENSHIFT env variables are present, use the available connection info:
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME;
+}
+app.mongoose.connect(connection_string);
+
+var ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1';
+var port    = process.env.OPENSHIFT_NODEJS_PORT || '3000';
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
