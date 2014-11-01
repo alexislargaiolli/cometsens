@@ -12,8 +12,9 @@ app.mongoose = require('mongoose');
 var connection_string = 'localhost/cometsens';
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.PROD){
-  connection_string = "mongodb://"+process.env.DB_USER+":"+process.env.DB_PASS+"@ds033400.mongolab.com:33400/"+process.env.DB_NAME;
+  connection_string = "mongodb://"+process.env.DB_USER+":"+process.env.DB_PASS+"@ds047940.mongolab.com:47940/heroku_app31181915";
 }
+console.log("---------> DATABASE : "+connection_string);
 app.mongoose.connect(connection_string);
 
 var port    = process.env.PORT || 5000;
@@ -47,7 +48,7 @@ var projects = require('./controllers/projectController.js');
 var Project = require('./models/project.js');
 var User = require('./models/user.js');
 
-var newUser = new User();
+/*var newUser = new User();
 // set the user's local credentials
 newUser.local.email = 'alexis.largaiolli@gmail.com';
 newUser.local.password = newUser.generateHash('doudou');
@@ -56,7 +57,7 @@ newUser.save(function(err) {
 	if (err) {
 		throw err;
 	}
-});
+});*/
 /*var p = new Project({
 	key : 1,
 	name : 'WeeMove',
