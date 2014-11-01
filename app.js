@@ -11,8 +11,8 @@ app.mongoose = require('mongoose');
 //default to a 'localhost' configuration:
 var connection_string = 'localhost/cometsens';
 // if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.DATABASE_URL){
-  connection_string = process.env.DATABASE_URL;
+if(process.env.PROD){
+  connection_string = "mongodb://"+process.env.DB_USER+":"+process.env.DB_PASS+"@ds033400.mongolab.com:33400/"+process.env.DB_NAME;
 }
 app.mongoose.connect(connection_string);
 
