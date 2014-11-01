@@ -12,7 +12,7 @@ app.mongoose = require('mongoose');
 var connection_string = 'localhost/cometsens';
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.PROD){
-  connection_string = "mongodb://"+process.env.DB_USER+":"+process.env.DB_PASS+"@ds047940.mongolab.com:47940/heroku_app31181915";
+  connection_string = process.env.MONGOLAB_URI;
 }
 console.log("---------> DATABASE : "+connection_string);
 app.mongoose.connect(connection_string);
