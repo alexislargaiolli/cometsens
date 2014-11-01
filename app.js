@@ -2,22 +2,24 @@
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path'), passport = require('passport'), flash = require('connect-flash');//, configDB = require('./config/database.js');
+var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path'), passport = require('passport'), flash = require('connect-flash');
 
 var app = express();
 app.mongoose = require('mongoose');
-//app.mongoose.connect(configDB.url, {user : 'admin', pass:'_jWzBKmp3JTQ'});
 
 //default to a 'localhost' configuration:
-var connection_string = 'localhost/cometsens';
-// if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.PROD){
-  connection_string = process.env.MONGOLAB_URI;
-}
-console.log("---------> DATABASE : "+connection_string);
-app.mongoose.connect(connection_string);
-
+var connection_string = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/cometsens';
 var port    = process.env.PORT || 5000;
+
+app.mongoose.connect(connection_string, function (err, res) {
+  if (err) {
+  console.log ('ERROR connecting to: ' + connection_string + '. ' + err);
+  } else {
+  console.log ('Succeeded connected to: ' + connection_string);
+  }
+});
+
+
 
 // all environments
 app.set('port', port);
