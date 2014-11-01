@@ -50,63 +50,6 @@ var projects = require('./controllers/projectController.js');
 var Project = require('./models/project.js');
 var User = require('./models/user.js');
 
-/*var newUser = new User();
-// set the user's local credentials
-newUser.local.email = 'alexis.largaiolli@gmail.com';
-newUser.local.password = newUser.generateHash('doudou');
-// save the user
-newUser.save(function(err) {
-	if (err) {
-		throw err;
-	}
-});*/
-/*var p = new Project({
-	key : 1,
-	name : 'WeeMove',
-	description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-	image : 'diapo1.png',
-	links : [ {
-		link : 'www.weemove.fr'
-	}, {
-		link : 'www.weemove2.v4.fr'
-	} ],
-	slides : [ {
-		name : 'Page d\'accueil',
-		description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-		image : 'diapo1.png',
-		order : 1
-	}, {
-		name : 'Page contact',
-		description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-		image : 'diapo1.png',
-		order : 2
-	}, {
-		name : 'Menus',
-		description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-		image : 'diapo1.png',
-		order : 3
-	},
-	{
-		name : 'Menus',
-		description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-		image : 'diapo1.png',
-		order : 4
-	},
-	{
-		name : 'Menus',
-		description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-		image : 'diapo1.png',
-		order : 5
-	},
-	{
-		name : 'Menus',
-		description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-		image : 'diapo1.png',
-		order : 6
-	}]
-});
-p.save();*/
-
 app.get('/', routes.index);
 app.get('/realisations', routes.realisations);
 app.get('/realisation/:key', routes.realisation);

@@ -51,7 +51,12 @@ a {
 	background-image: url("/img/logo.png");
 	background-repeat:no-repeat;
 	background-position:center;
-	
+}
+
+#logo a{
+	display: block;
+	height: 50px;
+	width: 60px;
 }
 
 #logo.active{
@@ -289,14 +294,67 @@ a {
 	margin-top:50px;
 }
 
-.home-block-title{
+.home-block-title, .home-block-subtitle{
 	font-family: 'Impact';
+	font-size: 40px;
+}
+
+.home-block-title{
 	color:#ff4053;
 }
 
 .home-block-subtitle{
-	font-family: 'Impact';
 	color:#fff;
+}
+
+#top-title-1, #top-title-2{
+	text-align: right;
+	position: relative;
+	z-index: 200;
+	margin-right: -200px;
+}
+
+#top-title-1, #bot-title-1{
+	margin-top: 28px;
+}
+
+#top-title-1 h1, #top-title-2 h1, #bot-title-2{
+	margin:5px 0;
+}
+
+#top-title-1 h1, #top-title-2 h1{
+	text-align: left;
+	width: 350px;
+	display: inline-block;
+}
+
+#top-title-2 h1, #bot-title-2{
+	text-shadow: 0px 0px 3px #000;
+}
+
+#plume{
+	float: right;
+	position: relative;
+	left: -120px;
+	top: -135px;
+}
+
+#play-bt{
+	float: right;
+	position: relative;
+	z-index: 100;
+	left: 270px;
+	top: 20px;
+}
+
+#pap{
+	margin: -650px 0 0 60px;
+}
+
+#webCom{
+	position: relative;
+	top: -130px;
+	left: -120px;
 }
 
 /* ------ CONTACT ----- */
