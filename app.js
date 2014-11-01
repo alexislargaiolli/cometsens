@@ -52,7 +52,7 @@ var projects = require('./controllers/projectController.js');
 var Project = require('./models/project.js');
 var User = require('./models/user.js');
 
-/*var newUser = new User();
+var newUser = new User();
 // set the user's local credentials
 newUser.local.email = 'alexis.largaiolli@gmail.com';
 newUser.local.password = newUser.generateHash('doudou');
@@ -61,7 +61,7 @@ newUser.save(function(err) {
 	if (err) {
 		throw err;
 	}
-});*/
+});
 /*var p = new Project({
 	key : 1,
 	name : 'WeeMove',
