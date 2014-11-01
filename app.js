@@ -11,17 +11,12 @@ app.mongoose = require('mongoose');
 //default to a 'localhost' configuration:
 var connection_string = 'localhost/cometsens';
 // if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-  process.env.OPENSHIFT_APP_NAME;
+if(process.env.DATABASE_URL){
+  connection_string = process.env.DATABASE_URL;
 }
 app.mongoose.connect(connection_string);
 
-var ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1';
-var port    = process.env.OPENSHIFT_NODEJS_PORT || '3000';
+var port    = process.env.PORT || 5000;
 
 // all environments
 app.set('port', port);
