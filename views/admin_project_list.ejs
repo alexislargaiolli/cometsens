@@ -114,19 +114,19 @@
 				class : 'row'
 			});
 			var $right = $('<div>', {
-				class : 'col-md-10',
+				class : 'col-md-9',
 				text : project.name
 			});
 			var $left = $('<div>', {
-				class : 'col-md-2'
+				class : 'col-md-3'
 			});
 			$left.append($('<a>', {
-				class : 'btn btn-info btn-sm',
+				class : 'btn btn-info btn-sm margin10',
 				href : '/admin/projects/edit/' + project.key,
 				text : 'Editer'
 			}));
 			$left.append($('<a>', {
-				class : 'btn btn-danger btn-sm',
+				class : 'btn btn-danger btn-sm margin10',
 				'data-toggle' : 'modal',
 				'data-target' : '#remove',
 				onclick : 'setCurrentProject(' + project.key + ')',

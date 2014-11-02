@@ -6,8 +6,8 @@
 }
 
 body {
-  padding: 0;
-  madding:0;
+	padding:0;
+	margin:0;
   background-color:#e6e6e6;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -16,95 +16,81 @@ a {
   color: #000;
 }
 
-/* ------ HEADER ----- */
-
-#header{
-	/*background:url(http://api.thumbr.it/whitenoise-300x400.png?background=f9f9f9ff&noise=999999&density=10&opacity=22);*/
-	background-color: #fff;
+.noMargin{
+	margin:0;
 }
 
-#header-nav{
-	width:500px;
+.noPadding{
+	padding:0;
 }
 
-#header-nav li{
-	height:50px;
-	padding:7px;
+.margin5{
+	margin:5px;
 }
 
-#header-nav li a{
-	color:#3a3a3a;
-	font-family: 'Arial';
+.vMargin5{
+	margin-left:5px;
+	margin-right:5px;
 }
 
-#header-nav li.active > a{
-	background-color:transparent;
-	color:#ff4053;
+.margin10{
+	margin:10px;
 }
 
-#header-nav li a:hover{
-	background-color:transparent;
-	color:#ff4053;
+.vMargin10{
+	margin-left:10px;
+	margin-right:10px;
 }
 
-#logo{
-	background-image: url("/img/logo.png");
-	background-repeat:no-repeat;
-	background-position:center;
-}
-
-#logo a{
-	display: block;
-	height: 50px;
-	width: 60px;
-}
-
-#logo.active{
-	background-image: url("/img/logo-on.png");
-}
-
-#logo:hover{
-	background-color: transparent;
-	background-image: url("/img/logo-on.png");
-}
-
-#header-right-nav{
-	float:right;
-}
-
-#header-right-nav li{
-	height:50px;
+.padding5{
 	padding:5px;
 }
 
-#header-right-nav li.active > a{
-	background-color: transparent;	
+.padding10{
+	padding:10px;
 }
 
-#header-right-nav li a:hover{
-	background-color:transparent;
+/* ------ HEADER ----- */
+
+#header{
+	background-color: #fff;
 }
 
-#bt-fb{
-	background-image: url("/img/facebook.png");
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #ff4053;
+}
+
+.navbar-brand{
+	width:70px;
+	background-image: url("/img/logo.png");
+}
+
+.navbar-brand:hover, .active.navbar-brand{
+	background-image: url("/img/logo-on.png");
+}
+
+#header-facebook, #header-viadeo{
+	color:transparent;
 	background-repeat:no-repeat;
 	background-position:center;
+}
+
+#header-facebook{
+	background-image: url("/img/facebook.png");	
 	border-left:1px solid #dfdfdf;
 	border-right:1px solid #dfdfdf;
 }
 
-#bt-fb:hover{
+#header-facebook:hover{
 	background-image: url("/img/facebook-on.png");
 	cursor:pointer;
 }
 
-#bt-vi{
+#header-viadeo{
 	background-image: url("/img/viadeo.png");
-	background-repeat:no-repeat;
-	background-position:center;
 }
 
-#bt-vi:hover{
+#header-viadeo:hover{
 	background-image: url("/img/viadeo-on.png");
 	cursor:pointer;	
 }
@@ -251,8 +237,35 @@ a {
 	padding:0;
 }
 
-#home-top-row #top-left{
+.red-block{
 	background:url(http://api.thumbr.it/whitenoise-361x370.png?background=d42133ff&noise=700e1a&density=20&opacity=25);	
+}
+
+.white-block{
+	background-color: #fff;
+}
+
+.middle-top-block{
+	background: url('/img/top-triangle.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.middle-bot-block{
+	background: url('/img/bot-triangle.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.always-visible{
+	z-index: 100;
+	position: relative;
+}
+
+.top-title{
+	white-space: nowrap;
 }
 
 #top-middle, #bot-middle{
@@ -265,8 +278,12 @@ a {
 	height:100%;
 }
 
-#home-top-row #top-right{
+#home-top-row #top-right, #small-bot{
 	background-color: #fff;
+}
+
+#small-top, #small-bot{
+	padding:30px;
 }
 
 #home-bot-row{
@@ -311,7 +328,7 @@ a {
 	text-align: right;
 	position: relative;
 	z-index: 200;
-	margin-right: -200px;
+	left: 200px;
 }
 
 #top-title-1, #bot-title-1{
@@ -328,8 +345,16 @@ a {
 	display: inline-block;
 }
 
-#top-title-2 h1, #bot-title-2{
+#top-title-2 h1, #bot-title-2, #small-bot-title-2, .shadow-title{
 	text-shadow: 0px 0px 3px #000;
+}
+
+#small-top-title-1, #small-top-title-2{
+	text-align: right;
+}
+
+#small-top-play{
+	float:right;
 }
 
 #plume{

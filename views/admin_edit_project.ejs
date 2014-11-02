@@ -53,8 +53,9 @@
 						<button style="margin: 10px auto;" class="btn btn-primary btn-sml" data-toggle="modal" data-target="#addSlide">Nouveau slide</button>
 					</div>
 				</div>
-				<div class="panel-footer" style="text-align: center;">
-					<button class="btn btn-default" onclick="saveProject();">Save</button>
+				<div class="panel-footer" style="text-align: center;">					
+					<button class="btn btn-default margin10" onclick="saveProject();">Save</button>
+					<div id="project-message" class="alert" role="alert"></div>
 				</div>
 			</div>
 		</div>
@@ -205,6 +206,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			getProject();
+			$('#project-message').hide();
 		});
 
 		var slides;
@@ -249,14 +251,14 @@
 				class : 'col-md-4'
 			});
 			$left.append($('<a>', {
-				class : 'btn btn-info btn-sm',
+				class : 'btn btn-info btn-sm vMargin10',
 				'data-toggle' : 'modal',
 				'data-target' : '#editLink',
 				onclick : 'setCurrentLink(' + i + ')',
 				text : 'Editer'
 			}));
 			$left.append($('<a>', {
-				class : 'btn btn-danger btn-sm',
+				class : 'btn btn-danger btn-sm vMargin10',
 				'style' : 'margin-right:10px;',
 				'data-toggle' : 'modal',
 				'data-target' : '#removeLink',
@@ -309,14 +311,14 @@
 				class : 'col-md-4'
 			});
 			$left.append($('<a>', {
-				class : 'btn btn-info btn-sm',
+				class : 'btn btn-info btn-sm vMargin10',
 				'data-toggle' : 'modal',
 				'data-target' : '#editSlide',
 				onclick : 'setCurrentSlide(' + i + ')',
 				text : 'Editer'
 			}));
 			$left.append($('<a>', {
-				class : 'btn btn-danger btn-sm',
+				class : 'btn btn-danger btn-sm vMargin10',
 				'data-toggle' : 'modal',
 				'data-target' : '#removeSlide',
 				onclick : 'setCurrentSlide(' + i + ')',
@@ -376,9 +378,38 @@
 		}
 		
 		function saveProject() {
-			$.post('/admin/projects/save/' + key, $('#form_edit').serialize()).done(function(project) {
+			$.post('/admin/projects/save/' + key, 
+				$('#form_edit').serialize())
+			.done(function(project) {
 				refreshProject(project);
+				showMessage('Projet sauvegardé !', true);
+			})
+			.fail(function() {
+				showMessage('Erreur lors de la sauvegarde...', false);
 			});
+		}
+
+		function showMessage(msg, success){
+			$alertMsg = $('#project-message');
+			$alertMsg.html(msg);
+			$alertMsg.removeClass('alert-error');
+			$alertMsg.removeClass('alert-success');
+			if(success){
+				$alertMsg.addClass('alert-success');
+			}
+			else{
+				$alertMsg.addClass('alert-danger');
+			}
+			$alertMsg.animate({
+				opacity: "toggle"
+				}, 500, "linear",
+				function(){
+					$alertMsg.animate({
+						opacity: "toggle"
+						}, 5000, "linear"
+					);
+				}
+			);	
 		}
 	</script>
 </body>

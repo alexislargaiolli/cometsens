@@ -19,8 +19,6 @@ app.mongoose.connect(connection_string, function (err, res) {
   }
 });
 
-
-
 // all environments
 app.set('port', port);
 app.set('views', __dirname + '/views');
@@ -49,6 +47,17 @@ require('./config/passport')(passport);
 var projects = require('./controllers/projectController.js');
 var Project = require('./models/project.js');
 var User = require('./models/user.js');
+
+/*var newUser = new User();
+// set the user's local credentials
+newUser.local.email = 'web.invent@live.fr';
+newUser.local.password = newUser.generateHash('w3binv3nt');
+// save the user
+newUser.save(function(err) {
+if (err) {
+throw err;
+}
+});*/
 
 app.get('/', routes.index);
 app.get('/realisations', routes.realisations);

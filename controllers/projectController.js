@@ -40,12 +40,17 @@ exports.add = function(req, res) {
 exports.save = function(req, res) {
 	Project.update({
 		key : req.params.key
-	}, {
+	}, {$set :{
 		name : req.body.name,
 		description : req.body.description,
 		image : req.body.image
-	}, function(err, project) {
-		res.send(project);
+	}}, function(err) {
+		if (err) return handleError(err);
+		Project.findOne({
+			key : req.params.key
+		}, function(err, project) {
+			res.send(project);
+		});	
 	});
 };
 

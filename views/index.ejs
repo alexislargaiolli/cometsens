@@ -1,67 +1,175 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Accueil</title>
-<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
-<link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-	<%- include header.ejs %>
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="/img/diapo-1.jpg" alt="First slide">
-				<div class="carousel-caption"></div>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Accueil</title>
+		<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+<%- include header.ejs %>
+<body>	
+	<div class="container-fluid noPadding" style="background-color:#fff;">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="/img/diapo-1.jpg" alt="First slide">
+					<div class="carousel-caption"></div>
+				</div>
+				<div class="item">
+					<img src="/img/diapo-1.jpg" alt="Second slide">
+					<div class="carousel-caption"></div>
+				</div>
 			</div>
-			<div class="item">
-				<img src="/img/diapo-1.jpg" alt="Second slide">
-				<div class="carousel-caption"></div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+		</div>
+		<div class="red-block hidden-xs hidden-sm" style="height:400px;width:50%;position:absolute;">	
+
+		</div>
+		<div class="red-block visible-xs visible-sm" style="height:400px;width:100%;position:absolute;">	
+
+		</div>
+		<div class="red-block hidden-xs hidden-sm" style="height:400px;width:50%;position:absolute;left:50%;margin-top:400px;">	
+
+		</div>
+		<div class="container" style="height:800px;">
+			<div class="hidden-xs hidden-sm">
+				<div class="col-md-4 home-block">
+					<img class="always-visible" src="/img/plume01.png" style="float:left;" />
+					<img class="always-visible" src="/img/play.png" style="float:left;position:relative;left:70%;top:-60%;" />
+					<div style="margin-left:50%;">
+						<h1 class="home-block-title top-title always-visible">Découvrez</h1>
+						<h1 class="home-block-subtitle top-title always-visible shadow-title">Mes réalisations</h1>	
+					</div>
+				</div>
+				<div class="col-md-4 home-block middle-top-block">
+					<img src="/img/papillon2.png" style="margin:10px 0 0 30%;" />
+				</div>
+				<div class="col-md-4 home-block">
+					<img alt="" src="/img/qui-quoi-comment.jpg" />
+					<img alt="" src="/img/web-com.png" style="margin:-200px 0 0 -50%;" />
+				</div>
+			</div>
+
+			<div class="hidden-xs hidden-sm">
+				<div class="col-md-4 home-block">
+					<img src="/img/puzzle.png" class="always-visible" />
+				</div>
+				<div class="col-md-4 home-block middle-bot-block"></div>
+				<div class="col-md-4 home-block">
+					<div style="margin-left:-50%;">
+						<h1 class="home-block-title top-title always-visible">Qui? Quoi? Comment?</h1>
+						<h1 class="home-block-subtitle top-title always-visible shadow-title">Présentation</h1>
+					</div>
+					<img alt="" src="/img/play.png" style="margin:20px 0 0 -20%;" />
+				</div>
+			</div>
+
+
+
+			<div class="visible-xs visible-sm home-block">
+				
+				<div class="col-sm-3 hidden-xs">
+					<img class="always-visible" src="/img/plume01.png" />
+				</div>
+				<div class="col-sm-7 col-xs-9">					
+					<h1 class="home-block-title always-visible">Découvrez</h1>
+					<h1 class="home-block-subtitle always-visible shadow-title">Mes réalisations</h1>
+					<img alt="" src="/img/play.png" style="margin:30px 0 0 20%;" class="always-visible" />
+				</div>
+				<div class="col-sm-2 col-xs-3">
+					<img src="/img/papillon2.png" style="margin-top:20px;"/>
+				</div>
+			</div>
+
+			<div class="visible-xs visible-sm home-block">
+				<div class="col-sm-6 hidden-xs">
+					<img src="/img/puzzle.png" style="width:100%;margin-top:40px;" />
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<h1 class="home-block-title always-visible">Qui? Quoi? Comment?</h1>
+					<h1 class="home-block-subtitle always-visible shadow-title">Présentation</h1>
+					<img alt="" src="/img/play.png" style="margin-left:20%;" />
+				</div>
+				
 			</div>
 		</div>
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-	</div>
-	
-	<div id="home-top-row" class="row">
-		<div id="top-left" class="col-md-5 home-block">
-			<div id="top-title-1">
-				<h1 class="home-block-title">Découvrez</h1>
+
+		<!--div>
+			<div class="col-lg-1 col-md-1 home-block red-block"></div>
+
+			<div class="col-lg-2 col-md-2 home-block red-block">
+				<img class="always-visible" src="/img/plume01.png" />												
 			</div>
-			<div id="top-title-2">
-				<h1 class="home-block-subtitle">Mes réalisations</h1>
-			</div>		
-			<img id="plume" alt="" src="/img/plume01.png" />			
-			<img id="play-bt" alt="" src="/img/play.png" />			
-			
+
+			<div class="col-lg-2 col-md-2 home-block red-block">
+				<h1 class="home-block-title top-title always-visible">Découvrez</h1>
+				<h1 class="home-block-subtitle top-title always-visible shadow-title">Mes réalisations</h1>				
+				<img class="always-visible" src="/img/play.png" style="left:40%;" />	
+			</div>
+			<div class="col-lg-2 col-md-2 home-block middle-top-block">	
+				<img src="/img/papillon2.png" />
+			</div>
+			<div class="col-lg-4 col-md-4 home-block white-block">	
+				<img alt="" src="/img/qui-quoi-comment.jpg" />
+				<img alt="" src="/img/web-com.png" />
+			</div>
+			<div class="col-lg-1 col-md-1 home-block white-block"></div>
 		</div>
-		<div id="top-middle" class="col-md-2 home-block hidden-xs hidden-sm">
-			<img class="triangle" src="/img/top-triangle.png" />		
-			<img id="pap" alt="" src="/img/papillon2.png" />
+		<div>
+			<div class="col-md-5 home-block white-block"></div>
+			<div class="col-md-2 home-block middle-bot-block">
+				<h1 class="home-block-title top-title always-visible">Qui? Quoi? Comment?</h1>
+				<h1 class="home-block-subtitle top-title always-visible">Présentation</h1>
+			</div>
+			<div class="col-md-5 home-block red-block">				
+				<img alt="" src="/img/play.png" />
+			</div>
+		</div-->
+
+		<!--<div id="home-top-row">
+			<div class="col-md-3 home-block red-block"></div>
+
+			<div id="top-left" class="col-md-2 home-block red-block">
+				<div id="top-title-1">
+					<h1 class="home-block-title">Découvrez</h1>
+				</div>
+				<div id="top-title-2">
+					<h1 class="home-block-subtitle">Mes réalisations</h1>
+				</div>		
+				<img id="plume" alt="" src="/img/plume01.png" />			
+				<img id="play-bt" alt="" src="/img/play.png" />			
+				
+			</div>
+			<div id="top-middle" class="col-md-2 home-block">
+				<img class="triangle" src="/img/top-triangle.png" />		
+				<img id="pap" alt="" src="/img/papillon2.png" />
+			</div>
+			<div id="top-right" class="col-md-2 home-block">	
+				<img alt="" src="/img/qui-quoi-comment.jpg" />
+				<img id="webCom" alt="" src="/img/web-com.png" />
+			</div>
+			<div class="col-md-3 home-block white-block">	
 		</div>
-		<div id="top-right" class="col-md-5 home-block">	
-			<img alt="" src="/img/qui-quoi-comment.jpg" />
-			<img id="webCom" alt="" src="/img/web-com.png" />
-		</div>
-	</div>
-	<div id="home-bot-row" class="row">
-		<div id="bot-left" class="col-md-5 home-block"></div>
-		<div id="bot-middle" class="col-md-2 home-block hidden-xs hidden-sm">
-			<img class="triangle" src="/img/bot-triangle.png" />
-		</div>
-		<div id="bot-right" class="col-md-5 home-block">
-			<h1 id="bot-title-1" class="home-block-title">Qui? Quoi? Comment?</h1>
-			<h1 id="bot-title-2" class="home-block-subtitle">Présentation</h1>
-			<img alt="" src="/img/play.png" />
-		</div>
-	</div>
-	
-	<%- include footer.ejs %>
+		<div id="home-bot-row">
+			<div id="bot-left" class="col-md-5 home-block"></div>
+			<div id="bot-middle" class="col-md-2 home-block">
+				<img class="triangle" src="/img/bot-triangle.png" />
+			</div>
+			<div id="bot-right" class="col-md-5 home-block red-block">
+				<h1 id="bot-title-1" class="home-block-title">Qui? Quoi? Comment?</h1>
+				<h1 id="bot-title-2" class="home-block-subtitle">Présentation</h1>
+				<img alt="" src="/img/play.png" />
+			</div>
+		</div> -->
+
+	<div>	
 </body>
+<%- include footer.ejs %>
 </html>
