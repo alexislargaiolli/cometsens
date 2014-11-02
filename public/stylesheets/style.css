@@ -9,7 +9,7 @@ body {
 	padding:0;
 	margin:0;
   background-color:#e6e6e6;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Arial, sans-serif;
 }
 
 a {
@@ -400,7 +400,9 @@ h1{
 	width:100%;
 }
 
-
+.blue-link{
+	color:#11a3d4;
+}
 
 /* ---------- ICON ----------- */
 @font-face {

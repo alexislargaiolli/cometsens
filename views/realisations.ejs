@@ -19,14 +19,14 @@
 				<div class="project-item" onclick="document.location='/realisation/<%= projects[i].key %>';">
 					<img class="project-image" src="<%= projects[i].image %>" />
 					<h2><%= projects[i].name %></h2>
-					<p><%= projects[i].description %></p>
+					<p><%- projects[i].description %></p>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="project-item" onclick="document.location='/realisation/<%= projects[i+1].key %>';">
 					<img class="project-image" src="<%= projects[i+1].image %>" />
 					<h2><%= projects[i+1].name %></h2>
-					<p><%= projects[i+1].description %></p>
+					<p><%- projects[i+1].description %></p>
 				</div>
 			</div>
 		</div>
