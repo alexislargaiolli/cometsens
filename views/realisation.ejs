@@ -20,9 +20,9 @@
 				</p>
 				<div class="row">
 					<div class="col-md-8">
-						<img id="current-slide-img" style="width:100%;" data-toggle="modal"/>
-						<h2 id="current-slide-title"></h2>
-						<p id="current-slide-desc"></p>
+						<img id="current-slide-img" style="width:100%;" data-toggle="modal" src="<%- project.slides[0].image %>" />
+						<h2 id="current-slide-title"><%- project.slides[0].name %></h2>
+						<p id="current-slide-desc"><%- project.slides[0].description %></p>
 					</div>
 					<div class="col-md-4">
 						<ul class="media-list">
@@ -47,7 +47,9 @@
 		  </div>
 		</div>
 	</div>
+
 	<%- include footer.ejs %>
+	
 	<script>
 		var currentProject = <%- JSON.stringify(project) %>;
 		var tmp = <%- JSON.stringify(project.slides) %>;
@@ -57,11 +59,9 @@
 		for(i=0; i<tmp.length;++i){			
 			slides[tmp[i].order] = tmp[i]; 
 		}
-		var first = tmp[0].order;
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			selectSlide(first);
 			$('#current-slide-img').click(function(){
 				$('#viewer').modal('show');
 			});
@@ -75,5 +75,6 @@
 			$('#current-slide-desc').html(slide.description).css('opacity', '0').animate({opacity:1});
 		}
 	</script>
+	
 </body>
 </html>

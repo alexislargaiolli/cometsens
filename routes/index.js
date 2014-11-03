@@ -41,6 +41,20 @@ exports.contact = function(req, res) {
 	});
 };
 
+exports.admin = function(req, res) {
+	if (req.isAuthenticated()) {
+		res.render('admin', {
+			title : 'Administration',
+			projects : projects
+		});
+	}
+	else{
+		res.render('login', {
+			message : req.flash('loginMessage')
+		});
+	}
+};
+
 exports.projectList = function(req, res) {
 	if (req.isAuthenticated()) {
 		projects.findAll(function(projects) {

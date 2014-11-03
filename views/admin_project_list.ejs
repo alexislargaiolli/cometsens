@@ -9,24 +9,37 @@
 <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-	<div class="container">
+	<div class="container">		
+
 		<div class="page-header">
 			<h1>
-				Admin <small>Gestion des projets</small>
+				Admin <small>Gestion des réalisations</small>
 			</h1>
 		</div>
+		<ol class="breadcrumb">
+		  <li><a href="/">Cometsens</a></li>
+		  <li><a href="/admin">Administration</a></li>
+		  <li><a href="/admin/projects">Gestion des réalisations</a></li>
+		</ol>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h2>Liste des projets</h2>
+				<ul class="nav nav-pills" role="tablist">
+				  <li role="presentation"><a href="/admin">Home</a></li>
+				  <li role="presentation" class="active"><a href="/admin/projects">Gestion des réalisations</a></li>
+				  <li role="presentation"><a href="#">Gestion de l'accueil</a></li>
+				</ul>
 			</div>
 			<div class="panel-body">
 				<ul id="project-list" class="list-group">
 
 				</ul>
 			</div>
+			<div class="alignCenter padding10">
+				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addProject"><span class="glyphicon glyphicon-plus padding5"></span> Nouveau réalisation</button>
+			</div>
 		</div>
 
-		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addProject">Nouveau projet</button>
+		
 
 		<!-- Modal -->
 		<div class="modal fade" id="addProject" tabindex="-1" role="dialog">
@@ -57,12 +70,14 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Voulez-vous supprimer ce projet ?</h4>
+						<h4 class="modal-title">Confirmation</h4>
 					</div>
-					<div class="modal-body"></div>
+					<div class="modal-body">
+						Voulez-vous supprimer ce projet ?
+					</div>
 					<div class="modal-footer" style="text-align: center;">
 						<button type="button" class="btn btn-primary" onclick="removeProject();">Oui</button>
-						<button type="button" class="btn btn-default" data-dismiss="remove">Annuler</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
 					</div>
 				</div>
 			</div>
@@ -97,6 +112,7 @@
 
 		function setCurrentProject(key) {
 			curProjectKey = key;
+			console.log(key);
 		}
 
 		function removeProject() {
@@ -120,18 +136,10 @@
 			var $left = $('<div>', {
 				class : 'col-md-3'
 			});
-			$left.append($('<a>', {
-				class : 'btn btn-info btn-sm margin10',
-				href : '/admin/projects/edit/' + project.key,
-				text : 'Editer'
-			}));
-			$left.append($('<a>', {
-				class : 'btn btn-danger btn-sm margin10',
-				'data-toggle' : 'modal',
-				'data-target' : '#remove',
-				onclick : 'setCurrentProject(' + project.key + ')',
-				text : 'Supprimer'
-			}));
+			$left.append('<a class="btn btn-info btn-sm vMargin10" href="/admin/projects/edit/'+project.key+'"><span class="glyphicon glyphicon-edit padding5"></span>Editer</a>');
+
+			$left.append('<a class="btn btn-danger btn-sm vMargin10" data-toggle="modal" data-target="#remove" onclick="setCurrentProject(\''+project.key+'\')"><span class="glyphicon glyphicon-trash padding5"></span>Supprimer</a>');
+
 			$row.append($right);
 			$row.append($left);
 			$li.append($row);

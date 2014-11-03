@@ -65,6 +65,7 @@ app.get('/realisation/:key', routes.realisation);
 app.get('/presentation', routes.presentation);
 app.get('/contact', routes.contact);
 
+app.get('/admin', routes.admin);
 app.get('/admin/projects', routes.projectList);
 app.get('/admin/projects/edit/:key', routes.editProject);
 app.post('/admin/projects/add', projects.add);

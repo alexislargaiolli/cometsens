@@ -33,6 +33,11 @@ a {
 	margin-right:5px;
 }
 
+.hMargin5{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
 .margin10{
 	margin:10px;
 }
@@ -42,12 +47,21 @@ a {
 	margin-right:10px;
 }
 
+.hMargin10{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
 .padding5{
 	padding:5px;
 }
 
 .padding10{
 	padding:10px;
+}
+
+.alignCenter{
+	text-align:center;
 }
 
 /* ------ HEADER ----- */
@@ -121,20 +135,7 @@ a {
 /* ------ FOOTER ----- */
 
 #footer{
-	min-height:160px;
-	background:#000;	
-}
-
-#footer #top-row .col-md-4{
-	height:130px;
-	text-align:center;
-}
-
-#footer #bot-row .col-md-4{
-	height:30px;	
-	color:#494949;
-	text-align:center;
-	font-size: 1.4em;
+	background:#000;
 }
 
 .footer-button{
@@ -142,11 +143,14 @@ a {
 	text-align:left;
 	color:#fff;
 	border:none;
+	height:70px;
+	width:210px;
+	margin:20px 0 10px 0;
 }
 
 .footer-button .footer-icon{
+	font-size:50px;
 	margin-right:10px;
-	font-size: 1.5em;
 	vertical-align: middle;
 }
 
@@ -165,50 +169,11 @@ a {
 	vertical-align: middle;
 }
 
-.footer-button .btn-footer-wrapper .left{
-	width:60px;	
-}
-
-.footer-button .btn-footer-wrapper .right{
-	width:100px;	
-}
-
-#btn-viadeo .footer-icon, #btn-facebook .footer-icon{
-	font-size: 60px;
-}
-
-#btn-viadeo{
-	height:80px;
-	margin-top:25px;
-}
-
-#btn-mail{
-	height:60px;
-	margin-top:35px;
-}
-
-#btn-mail .footer-icon{
-	font-size: 40px;
-}
-
-#btn-mail .big-font, #btn-mail .footer-icon{
-	vertical-align: middle;
-}
-
-#btn-facebook{
-	height:80px;
-	margin-top:25px;
-}
-
-#footer #bot-row .middle-row{
+.footerMiddleLinkColor a{
 	color:#929292!important;
 }
 
-#footer #bot-row .middle-row a{
-	color:#929292!important;
-}
-
-#footer #bot-row .col-md-4 a{
+.footerSidesLinkColor a{
 	color:#494949;	
 	text-decoration: underline;
 }

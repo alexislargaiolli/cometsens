@@ -1,24 +1,29 @@
 
   <div id="footer" class="container-fluid">
-    	<div id="top-row" class="row" style="margin:0;">
-		<div class="col-md-4">
+		<div class="col-md-4 alignCenter">
 			<button id="btn-viadeo" type="button" class="btn btn-default btn-lg footer-button">
 				<div class="btn-footer-wrapper left">
 					<span class="icon-vimeo footer-icon"></span>
 				</div>
 				<div class="btn-footer-wrapper right">
 					<div class="big-font">Visiter</div>
-					<div class="small-font">mon profil viadeo</div>
+					<div class="small-font">mon viadeo</div>
 				</div>
 
 			</button>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 alignCenter">
 			<button id="btn-mail" type="button" class="btn btn-default btn-lg footer-button">
-				<span class="glyphicon glyphicon-envelope footer-icon"></span><span class="big-font">Envoyer un message</span>
+				<div class="btn-footer-wrapper left">
+					<span class="glyphicon glyphicon-envelope footer-icon"></span>
+				</div>
+				<div class="btn-footer-wrapper right">
+					<div class="big-font">Contacter</div>
+					<div class="small-font">par mail</div>
+				</div>				
 			</button>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 alignCenter">
 			<button id="btn-facebook" type="button" class="btn btn-default btn-lg footer-button">
 				<div class="btn-footer-wrapper left">
 					<span class="icon-facebook footer-icon"></span>
@@ -29,16 +34,13 @@
 				</div>
 			</button>
 		</div>
-	</div>
-	<div id="bot-row" class="row" style="margin:0;">
-		<div class="col-md-4">
+		<div class="col-md-4 footerSidesLinkColor alignCenter hMargin10">
 			<a href="#">Mentions légales</a> - <a href="#">Crédits</a>
 		</div>
-		<div class="col-md-4 middle-row">
+		<div class="col-md-4 middle-row footerMiddleLinkColor alignCenter" hMargin10>
 			TEL: <a href="tel:0673600875">06 73 60 08 75</a> | MAIL: <a href="mailto:gamdesign@gmail.com">gamdesign@gmail.com</a>
 		</div>
-		<div class="col-md-4">Gamdesign.fr &copy;2014</div>
-	</div>
+		<div class="col-md-4 footerSidesLinkColor alignCenter hMargin10">Gamdesign.fr &copy;2014</div>
   </div>
 
 <script src="/js/jquery-1.11.0.js"></script>
@@ -58,5 +60,6 @@
 		} else {
 			$footer.css('margin-top', '0')
 		}
+		console.log('fixFooter');
 	}
 </script>
