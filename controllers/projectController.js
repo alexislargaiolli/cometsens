@@ -1,7 +1,7 @@
 var Project = require('../models/project.js');
 
-exports.findAll = function(callback) {
-	Project.find(function(err, projects) {
+exports.findAll = function(callback) {	
+	Project.find({}).sort('order').exec(function(err, projects) {
 		callback(projects);
 	});
 };
@@ -43,7 +43,8 @@ exports.save = function(req, res) {
 	}, {$set :{
 		name : req.body.name,
 		description : req.body.description,
-		image : req.body.image
+		image : req.body.image,
+		order : req.body.order
 	}}, function(err) {
 		if (err) return handleError(err);
 		Project.findOne({

@@ -44,6 +44,10 @@
 							<label for="image">Image:</label> 
 							<input type="text" class="form-control" id="image" name="image" placeholder="Image de présentation du projet">
 							</div>
+							<div class="padding10">	
+							<label for="order">Ordre dans la liste des réalisations:</label> 
+							<input type="text" class="form-control" id="order" name="order">
+							</div>
 						</form>
 					</div>
 				</div>
@@ -246,9 +250,11 @@
 
 		function refreshProject(project) {
 			$('#breadcrumbProjectName').html(project.name);
-			$('#form_edit').find("input[name='name']").val(project.name);
-			$('#form_edit').find("textarea[name='description']").val(project.description);
-			$('#form_edit').find("input[name='image']").val(project.image);
+			$form = $('#form_edit');
+			$form.find("input[name='name']").val(project.name);
+			$form.find("textarea[name='description']").val(project.description);
+			$form.find("input[name='image']").val(project.image);
+			$form.find("input[name='order']").val(project.order);
 			refreshLinks(project);
 			refreshSlides(project);
 		}

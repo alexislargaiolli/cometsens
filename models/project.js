@@ -13,8 +13,9 @@ var projectSchema = new Schema({
 		description : String,
 		image : String,
 		miniature : String,
-		order : Number
-	} ]
+		order : { type: Number, default: 0 }
+	} ],
+	order : { type: Number, default: 0 }
 });
 
 projectSchema.virtual('image.url').get(function() {

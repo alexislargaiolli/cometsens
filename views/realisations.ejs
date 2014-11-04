@@ -12,9 +12,7 @@
 	<%- include header.ejs %>
 	<div class="container">
 		<h1 id="main-title">Réalisations</h1>
-		<% var length = projects.length; if(length%2 != 0){ length += 1; } length /= 2; for(var i=0; i
-		<length; i++) { %>
-		<div class="row">
+		<% for(var i=0; i < projects.length; i++) { %>
 			<div class="col-md-6">
 				<div class="project-item" onclick="document.location='/realisation/<%= projects[i].key %>';">
 					<img class="project-image" src="<%= projects[i].image %>" />
@@ -22,14 +20,6 @@
 					<p><%- projects[i].description %></p>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="project-item" onclick="document.location='/realisation/<%= projects[i+1].key %>';">
-					<img class="project-image" src="<%= projects[i+1].image %>" />
-					<h2><%= projects[i+1].name %></h2>
-					<p><%- projects[i+1].description %></p>
-				</div>
-			</div>
-		</div>
 		<% } %>
 	</div>
 	<%- include footer.ejs %>
