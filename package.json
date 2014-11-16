@@ -20,7 +20,7 @@
     "bcrypt-nodejs": "0.0.3",
     "express-session": "^1.7.6",
     "postmark" : "lastest",
-    "cloudinay" : "lastest"
+    "cloudinary" : "lastest"
   },
   "description": "",
   "main": "app.js",
