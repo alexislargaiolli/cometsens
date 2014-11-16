@@ -1,0 +1,29 @@
+{
+  "name": "cometsens",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alexislargaiolli/cometsens",
+  "authors": [
+    "alargaiolli <alexis.largaiolli@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "latest",
+    "ng-file-upload-shim": "1.6.x",
+    "ng-file-upload": "1.6.x",    
+    "angular": "1.3.x",
+    "angular-ui-tinymce": "latest",
+    "angular-route": "~1.3.x",
+    "angular-resource": "~1.3.x",
+    "angular-animate": "~1.3.x",
+    "angular-sanitize": "~1.3.x",
+    "tinymce": "lastest",
+    "cloudinary_ng": ">=0.1.1"
+  }
+}

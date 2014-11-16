@@ -1,0 +1,10 @@
+<form>
+    <div href="#" class="btn btn-default uploadButton" ng-file-select="onFileSelect($files)" data-multiple="false" title="aaaa" onclick="this.value = null">
+        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+    </div>                    
+    <div class="status" ng-show="isUploading">{{status}}</div>
+    <div class="progress" ng-show="isUploading">
+      <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
+        {{progress}}%
+    </div>            
+</form>

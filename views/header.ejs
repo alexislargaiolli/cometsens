@@ -1,56 +1,65 @@
-<nav id="header" class="navbar navbar-default noMargin" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand <% if (page == 'home') { %>active<% } %>" href="/"></a>
-    </div>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><%= title %></title>
+	<link rel='stylesheet' href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />		
+	<link rel='stylesheet' href='/stylesheets/style.css' />
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-       <li class="<% if (page == 'realisations') { %>active<% } %>"><a href="/realisations">Réalisations</a></li>
-		<li class="<% if (page == 'presentation') { %>active<% } %>"><a href="/presentation">Présentation</a></li>
-		<li class="<% if (page == 'contact') { %>active<% } %>"><a href="/contact">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
-        <li><a id="header-facebook" href="#">fb</a></li>
-		<li><a id="header-viadeo" href="#">vi</a></li>
-		<li id="header-bt-contact"><a data-toggle="modal" data-target="#contact-form"><span class="glyphicon glyphicon-pencil"></span>Contacter</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-<!-- ADD LINK -->
-<div class="modal fade" id="contact-form" tabindex="-1" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Formulaire de contact</h4>
+	<nav id="header" class="navbar navbar-default noMargin" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand <% if (page == 'home') { %>active<% } %>" href="/"></a>
 			</div>
-			<div class="modal-body">
-				<div id="panel-form-contact" class="panel panel-default">
-					<div class="panel-body">
-						<form id="contact-form">
-							<input type="text" class="form-control" placeholder="Nom" /> <input type="text" class="form-control" placeholder="Prénom" /> <input type="text" class="form-control" placeholder="Votre e-mail" />
-							<textarea class="form-control" rows="6" placeholder="Message"></textarea>
 
-						</form>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="<% if (page == 'realisations') { %>active<% } %>"><a href="/realisations">Réalisations</a></li>
+					<li class="<% if (page == 'presentation') { %>active<% } %>"><a href="/presentation">Présentation</a></li>
+					<li class="<% if (page == 'contact') { %>active<% } %>"><a href="/contact">Contact</a></li>
+				</ul>
+				<ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
+					<li><a id="header-facebook" href="#">fb</a></li>
+					<li><a id="header-viadeo" href="#">vi</a></li>
+					<li id="header-bt-contact"><a data-toggle="modal" data-target="#contact-form"><span class="glyphicon glyphicon-pencil"></span>Contacter</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<!-- ADD LINK -->
+	<div class="modal fade" id="contact-form" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Formulaire de contact</h4>
+				</div>
+				<div class="modal-body">
+					<div id="panel-form-contact" class="panel panel-default">
+						<div class="panel-body">
+							<form id="contact-form">
+								<input type="text" class="form-control" placeholder="Nom" /> <input type="text" class="form-control" placeholder="Prénom" /> <input type="text" class="form-control" placeholder="Votre e-mail" />
+								<textarea class="form-control" rows="6" placeholder="Message"></textarea>
+
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer" style="text-align: center;">
-				<button type="button" class="btn btn-default btn-lg">
-					<span class="glyphicon glyphicon-chevron-right"></span><span>Envoyer</span>
-				</button>
+				<div class="modal-footer" style="text-align: center;">
+					<button type="button" class="btn btn-default btn-lg">
+						<span class="glyphicon glyphicon-chevron-right"></span><span>Envoyer</span>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</head>

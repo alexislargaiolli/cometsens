@@ -1,0 +1,68 @@
+.clickable{
+	cursor:pointer;
+}
+
+#projectImageSlot{
+	width:60%;
+	margin:10px auto;
+}
+
+#slideImageSlot{
+	height:200px;
+}
+
+#projectImageSlot:hover .uploadButton, #slideImageSlot:hover .uploadButton{
+	opacity: 1;
+}
+
+#projectImageSlot:hover, #slideImageSlot:hover{
+	border-color: #aaa;
+}
+
+.uploadButton{
+	width:60px;
+	height:60px;
+	line-height: 45px;
+	opacity: 0.5;
+	position: absolute;
+}
+
+.uploadButton:hover{
+	opacity: 1;
+}
+
+.slideItem{
+	border:1px solid #eee;
+	padding:5px;
+	width:90%;
+	min-height:50px;
+	margin:4px auto;
+	line-height:100%;
+}
+
+.slideItem:hover{
+	border:1px solid #ddd;
+}
+
+.slideItem .btn{
+	opacity: 0.5;
+	margin-top:5px;
+}
+
+.slideItem:hover .btn{
+	opacity: 1;
+}
+
+.editButtonBlock{
+	float:right;
+	width:60px;
+}
+
+.editButtonBlock .btn{
+	margin:10px;
+	opacity: 0.5;
+}
+
+.editButtonBlock:hover .btn{
+	opacity: 1;
+}

@@ -1,13 +1,17 @@
+var express = require('express');
+var router = express.Router();
 var projects = require('../controllers/projectController.js');
+var mailer = require('../controllers/mailer.js');
+var passport = require('passport');
 
-exports.index = function(req, res) {
+router.get('/', function(req, res) {
 	res.render('index', {
-		title : 'Express',
+		title : 'Com&Sens',
 		page : 'home'
 	});
-};
+});
 
-exports.realisations = function(req, res) {
+router.get('/realisations', function(req, res) {
 	projects.findAll(function(projects) {
 		res.render('realisations', {
 			title : 'Réalisations',
@@ -15,9 +19,9 @@ exports.realisations = function(req, res) {
 			projects : projects
 		});
 	});
-};
+});
 
-exports.realisation = function(req, res) {
+router.get('/realisation/:key', function(req, res) {
 	projects.find(req.params.key, function(project) {
 		res.render('realisation', {
 			title : 'Réalisation',
@@ -25,24 +29,40 @@ exports.realisation = function(req, res) {
 			project : project
 		});
 	});
-};
+});
 
-exports.presentation = function(req, res) {
+router.get('/presentation', function(req, res) {
 	res.render('presentation', {
 		title : 'Présentation',
 		page : 'presentation'
 	});
-};
+});
 
-exports.contact = function(req, res) {
+router.get('/contact', function(req, res) {
 	res.render('contact', {
 		title : 'Contact',
-		page : 'contact'
+		page : 'contact',
+		mailStatus:null,
+		mailMessage:null
 	});
-};
+});
+
+router.post('/contact', function(req, res) {
+	mailer.sendMail(req.body.email, req.body.fistname, req.body.lastname, req.body.content, function(code, msg){
+		console.log(code, msg);
+		res.render('contact', {
+			title : 'Contact',
+			page : 'contact',
+			mailStatus : code,
+			mailMessage : msg
+		});
+	});
+});
+
 
 exports.admin = function(req, res) {
-	if (req.isAuthenticated()) {
+	
+	/*if (req.isAuthenticated()) {
 		res.render('admin', {
 			title : 'Administration',
 			projects : projects
@@ -52,7 +72,7 @@ exports.admin = function(req, res) {
 		res.render('login', {
 			message : req.flash('loginMessage')
 		});
-	}
+	}*/
 };
 
 exports.projectList = function(req, res) {
@@ -95,3 +115,4 @@ exports.editSlide = function(req, res) {
 		});
 	}
 };
+module.exports = router;

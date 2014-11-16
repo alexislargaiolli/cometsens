@@ -1,105 +1,92 @@
 /**
  * Module dependencies.
  */
-
-var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path'), passport = require('passport'), flash = require('connect-flash');
-
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var flash = require('connect-flash');
+var index = require('./routes/index');
+var admin = require('./routes/admin');
 var app = express();
+var session = require('express-session');
+var cloudinary = require('cloudinary');
 app.mongoose = require('mongoose');
+require('./models/project.js');
+require('./models/user.js');
+require('./config/passport')(passport);
 
-//default to a 'localhost' configuration:
-var connection_string = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/cometsens';
-var port    = process.env.PORT || 5000;
 
-app.mongoose.connect(connection_string, function (err, res) {
-  if (err) {
-  console.log ('ERROR connecting to: ' + connection_string + '. ' + err);
-  } else {
-  console.log ('Succeeded connected to: ' + connection_string);
-  }
+cloudinary.config({ 
+  cloud_name: 'hjv91zvk6', 
+  api_key: '839533558143963', 
+  api_secret: 'KvrE7C6c0x1QMHWtECgKViUlNhY' 
 });
 
-// all environments
-app.set('port', port);
+
+
+// view engine setup
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.cookieParser());
-app.use(express.session({
-	secret : 'secretkey'
-}));
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
+app.use(session({secret: 'ssshhhhh'}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
-if ('development' === app.get('env')) {
-	app.use(express.errorHandler());
-}
-
-require('./config/passport')(passport);
-
-var projects = require('./controllers/projectController.js');
-var Project = require('./models/project.js');
-var User = require('./models/user.js');
-
-/*var newUser = new User();
-// set the user's local credentials
-newUser.local.email = 'web.invent@live.fr';
-newUser.local.password = newUser.generateHash('w3binv3nt');
-// save the user
-newUser.save(function(err) {
-if (err) {
-throw err;
-}
-});*/
-
-app.get('/', routes.index);
-app.get('/realisations', routes.realisations);
-app.get('/realisation/:key', routes.realisation);
-app.get('/presentation', routes.presentation);
-app.get('/contact', routes.contact);
-
-app.get('/admin', routes.admin);
-app.get('/admin/projects', routes.projectList);
-app.get('/admin/projects/edit/:key', routes.editProject);
-app.post('/admin/projects/add', projects.add);
-
-app.get('/projects/list', projects.list);
-app.get('/projects/get/:key', projects.get);
-
-//=====================================
-// LOGIN ===============================
-// =====================================
-// show the login form
 app.get('/login', function(req, res) {
-
-	// render the page and pass in any flash data if it exists
 	res.render('login', {
 		message : req.flash('loginMessage')
 	});
 });
 
 app.post('/login', passport.authenticate('local-login', {
-	successRedirect : '/admin/projects', // redirect to the secure profile section
+	successRedirect : '/admin', // redirect to the secure profile section
 	failureRedirect : '/login', // redirect back to the signup page if there is an error
 	failureFlash : true
 }));
 
-app.post('/admin/projects/save/:key', projects.save);
-app.post('/admin/projects/remove/:key', projects.remove);
-app.post('/admin/projects/link/add/:key', projects.addLink);
-app.post('/admin/projects/link/edit/:key/:id', projects.editLink);
-app.post('/admin/projects/link/remove/:key/:id', projects.removeLink);
-app.post('/admin/projects/slide/add/:key', projects.addSlide);
-app.post('/admin/projects/slide/edit/:key/:id', projects.editSlide);
-app.post('/admin/projects/slide/remove/:key/:id', projects.removeSlide);
+app.use('/', index);
+app.use('/admin', admin);
 
-http.createServer(app).listen(app.get('port'), function() {
-	console.log('Express server listening on port ' + app.get('port'));
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
+module.exports = app;

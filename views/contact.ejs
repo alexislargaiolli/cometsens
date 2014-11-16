@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact</title>
-<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
-<link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
+<%- include header.ejs %>
 <body>
-	<%- include header.ejs %>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -34,15 +26,28 @@
 				<div id="panel-form-contact" class="panel panel-default">
 					<div class="panel-body">
 						<h3>Formulaire de contact</h3>
-						<form id="contact-form">
-							<input type="text" class="form-control" placeholder="Nom" /> 
-							<input type="text" class="form-control" placeholder="Prénom" /> 
-							<input type="text" class="form-control" placeholder="Votre e-mail" />
-							<textarea class="form-control" rows="6" placeholder="Message"></textarea>
-							<button type="button" class="btn btn-default btn-lg">
+						<form id="contact-form" method="post" post="/contact">
+							<input type="text" name="lastname" class="form-control" placeholder="Nom" requiered /> 
+							<input type="text" name="firstname" class="form-control" placeholder="Prénom" requiered/> 
+							<input type="text" name="email" class="form-control" placeholder="Votre e-mail" requiered />
+							<textarea class="form-control" name="content" rows="6" placeholder="Message" requiered></textarea>
+							<input type="submit" class="btn btn-default btn-lg">
 								<span class="glyphicon glyphicon-chevron-right"></span><span>Envoyer</span>
-							</button>
-						</form>						
+							</input>
+						</form>
+						<% 
+							if(mailStatus && mailStatus == 'error'){
+								%>
+									<div class="alert alert-danger" role="alert"><%= mailMessage %></div>			
+								<%
+							} 
+							else{
+								%>
+									<div class="alert alert-success" role="alert"><%= mailMessage %></div>			
+								<%
+							}
+
+						%>						
 					</div>
 				</div>
 			</div>

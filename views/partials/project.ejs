@@ -1,0 +1,166 @@
+<div class="container">			
+	<div class="page-header">
+		<h1>
+			Admin <small>{{selectedProject.name}}</small>
+		</h1>
+	</div>
+	<navigation-admin></navigation-admin>
+
+	<div style="padding:20px;">
+		<div class="panel panel-default">
+			<form name="editProject">
+				<div class="panel-heading">
+					<a href="#/projects" class="btn btn-default">Retour</a>
+					<button ng-click="save()" type="button" class="btn btn-success">Sauvegarder</button>
+				</div>
+				<div class="panel-body">
+
+					<div role="tabpanel">
+
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a data-target="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+							<li role="presentation"><a data-target="#links" aria-controls="links" role="tab" data-toggle="tab">Links</a></li>
+							<li role="presentation"><a data-target="#slides" aria-controls="slides" role="tab" data-toggle="tab">Slides</a></li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="info">
+								
+								<div class="page-header">									
+									<h1>Informations <small>du project</small></h1>
+								</div>
+								<div class="input-group" style="width:90%;margin:20px auto;">
+									<span class="input-group-addon">Nom</span>
+									<input type="text" class="form-control" placeholder="Nom" ng-model="selectedProject.name" >
+								</div>
+								<div style="width:90%;margin:20px auto;">
+									<textarea ui-tinymce="tinymceOptions" ng-model="selectedProject.description"></textarea>					
+								</div>
+								<div id="projectImageSlot" class="thumbnail" style="min-height:100px;">
+
+									<alx-file-upload url="uploadedFile" on-upload-finished="setProjectImage()"></alx-file-upload>
+									<img  ng-show="selectedProject.image != null" src="{{selectedProject.image}}" style="width:100%;"/>
+
+								</div>
+								
+							</div>
+							<div role="tabpanel" class="tab-pane" id="links">
+								<div class="page-header">
+									<button type="button" ng-click="addLink()" class="btn btn-success" style="float:right;">
+										<span class="glyphicon glyphicon-plus"></span>
+									</button>
+									<h1>Liens <small>du project</small></h1>
+								</div>
+
+								<div class="row slideItem" ng-repeat="link in selectedProject.links">
+									<div class="col-md-10"><p>{{link.link}}</p></div>
+									<div class="col-md-2">
+										<button type="button" ng-click="setSelectedLink(link)" class="btn btn-success" data-toggle="modal" data-target="#modalLink">
+											<span class="glyphicon glyphicon-pencil"></span>
+										</button>
+										<button type="button" ng-click="removeLink(link)" class="btn btn-danger">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</div>
+								</div>
+
+								<div class="modal fade" id="modalLink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+												<h4 class="modal-title" id="myModalLabel">Edition lien {{selectedLink.link}}</h4>
+											</div>
+											<div class="modal-body">												
+												<div class="input-group">
+													<span class="input-group-addon">Lien</span>
+													<input type="text" class="form-control" placeholder="Nom" ng-model="selectedLink.link" >
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+							<div role="tabpanel" class="tab-pane" id="slides">
+								<div class="page-header">
+									<button type="button" ng-click="addSlide()" class="btn btn-success" style="float:right;">
+										<span class="glyphicon glyphicon-plus"></span>
+									</button>
+									<h1>Slides <small>du project</small></h1>
+								</div>						
+
+								<div class="row slideItem" ng-repeat="slide in selectedProject.slides">
+									<div class="col-md-2">
+										<img ng-show="slide.image != null" src="{{slide.image}}" alt="{{slide.name}}" style="width:128px;" >
+										<div ng-show="slide.image == null" style="height:50px;width:128px;background:#eee;"></div>
+									</div>
+									<div class="col-md-9">
+
+										<h4>{{slide.name}}</h4>
+										<div ng-bind-html="slide.description"></div>
+									</div>
+									<div class="col-md-1">
+										<div style="width:60px;">
+											<button type="button" ng-click="setSelectedSlide(slide)" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+												<span class="glyphicon glyphicon-pencil"></span>
+											</button>
+											<button type="button" ng-click="removeSlide(slide)" class="btn btn-danger">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button>
+										</div>
+									</div>
+								</div>				
+
+
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+												<h4 class="modal-title" id="myModalLabel">Edition slide {{selectedSlide.name}}</h4>
+											</div>
+											<div class="modal-body">
+												<div class="row">
+													<div class="col-md-4">
+														<div id="slideImageSlot" class="thumbnail">
+
+															<alx-file-upload url="uploadedFile" on-upload-finished="setSlideImage()"></alx-file-upload>
+															<img  ng-show="selectedSlide.image != null" src="{{selectedSlide.image}}" style="max-width:100%;max-height:200px;"/>
+
+														</div>
+													</div>
+													<div class="col-md-8">
+														<div class="input-group">
+															<span class="input-group-addon">Nom</span>
+															<input type="text" class="form-control" placeholder="Nom" ng-model="selectedSlide.name" >
+														</div>
+														<div style="margin-top:20px;">
+															<textarea ui-tinymce="tinymceOptions" ng-model="selectedSlide.description"></textarea>					
+														</div>
+													</div>												
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>			
+		</form>
+	</div>		
+</div>
+</div>
