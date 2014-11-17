@@ -96,15 +96,25 @@
 									<h1>Slides <small>du project</small></h1>
 								</div>						
 
-								<div class="row slideItem" ng-repeat="slide in selectedProject.slides">
+								<div class="row slideItem" ng-repeat="slide in selectedProject.slides | orderBy:'order':false">
 									<div class="col-md-2">
 										<img ng-show="slide.image != null" src="{{slide.image}}" alt="{{slide.name}}" style="width:128px;" >
 										<div ng-show="slide.image == null" style="height:50px;width:128px;background:#eee;"></div>
 									</div>
-									<div class="col-md-9">
+									<div class="col-md-8">
 
-										<h4>{{slide.name}}</h4>
+										<h4>{{slide.name}} ({{slide.order}})</h4>
 										<div ng-bind-html="slide.description"></div>
+									</div>
+									<div class="col-md-1">
+										<div style="width:60px;">
+											<button type="button" ng-click="slideOrderUp(slide)" class="btn btn-default">
+												<span class="glyphicon glyphicon glyphicon-arrow-up"></span>
+											</button>
+											<button type="button" ng-click="slideOrderDown(slide)" class="btn btn-default">
+												<span class="glyphicon glyphicon glyphicon-arrow-down"></span>
+											</button>
+										</div>
 									</div>
 									<div class="col-md-1">
 										<div style="width:60px;">

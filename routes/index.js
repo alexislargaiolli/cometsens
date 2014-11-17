@@ -3,12 +3,25 @@ var router = express.Router();
 var projects = require('../controllers/projectController.js');
 var mailer = require('../controllers/mailer.js');
 var passport = require('passport');
+var CarouselItem = require('../models/carouselItem.js');
 
 router.get('/', function(req, res) {
-	res.render('index', {
-		title : 'Com&Sens',
-		page : 'home'
-	});
+	CarouselItem.find(function(err, ci) {
+      if(!err) {
+    	res.render('index', {
+			title : 'Com&Sens',
+			page : 'home',
+			items : ci 
+		});    
+      } else {
+        res.render('index', {
+			title : 'Com&Sens',
+			page : 'home',
+			items : [] 
+		});
+      }
+    });	
+	
 });
 
 router.get('/realisations', function(req, res) {

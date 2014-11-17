@@ -4,6 +4,11 @@ projectServices.factory('Project', ['$resource',
    		return $resource('/admin/api/project/:id', {id:'@_id'},  { 'update': {method: 'PUT'} }); 
     }
 ]);
+projectServices.factory('CarouselItem', ['$resource',
+    function($resource){
+        return $resource('/admin/api/carousel/:id', {id:'@_id'},  { 'update': {method: 'PUT'} }); 
+    }
+]);
 projectServices.factory('album', ['$rootScope', '$resource',
 	function($rootScope, $resource){
 		var url = $.cloudinary.url('myphotoalbum', {format: 'json', type: 'list'});

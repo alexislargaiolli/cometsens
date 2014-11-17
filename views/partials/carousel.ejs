@@ -1,0 +1,46 @@
+<div class="container">			
+	<div class="page-header">
+		<h1>
+			Admin <small>caroussel</small>
+		</h1>
+	</div>
+	<navigation-admin></navigation-admin>
+	<div style="padding:20px;">
+		<div class="row slideItem" ng-repeat="ci in items | orderBy:'order':false">
+			<div class="col-md-2">({{ci.order}})</div>
+			<div class="col-md-8">
+				<div id="projectImageSlot" class="thumbnail" style="min-height:50px;">
+
+					<alx-file-upload url="ci.image" on-upload-finished=""></alx-file-upload>
+					<img  ng-show="ci.image != null" src="{{ci.image}}" style="width:100px;"/>
+
+				</div>
+			</div>
+			<div class="col-md-1">
+				<button type="button" ng-click="orderUp(ci)" class="btn btn-default">
+					<span class="glyphicon glyphicon glyphicon-arrow-up"></span>
+				</button>
+				<button type="button" ng-click="orderDown(ci)" class="btn btn-default">
+					<span class="glyphicon glyphicon glyphicon-arrow-down"></span>
+				</button>
+			</div>
+			<div class="col-md-1">				
+				<button type="button" ng-click="save(ci)" class="btn btn-primary">
+					<span class="glyphicon glyphicon-floppy-disk"></span>
+				</button>
+				<button type="button" ng-click="remove(ci)" class="btn btn-danger">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div style="padding:10px;text-align:center;">
+		<button type="button" ng-click="create()" class="btn btn-success">
+			<span class="glyphicon glyphicon-plus"></span> Caroussel élément
+		</button>
+		<button type="button" ng-click="saveOrder()" ng-disabled="itemsToSave.length == 0" class="btn btn-primary">
+			<span class="glyphicon glyphicon glyphicon-floppy-disk"></span> Ordre
+		</button>
+	</div>
+
+</div>

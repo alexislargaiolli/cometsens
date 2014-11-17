@@ -7,8 +7,16 @@
 	<navigation-admin></navigation-admin>
 
 	<div style="padding:20px;">
-		<div class="row slideItem" ng-repeat="project in projects">
-			<div class="col-md-10"><p>{{project.name}}</p></div>
+		<div class="row slideItem" ng-repeat="project in projects | orderBy:'order':false">
+			<div class="col-md-8">{{project.name}} ({{project.order}})</div>
+			<div class="col-md-2">
+				<button type="button" ng-click="orderUp(project)" class="btn btn-default">
+					<span class="glyphicon glyphicon glyphicon-arrow-up"></span>
+				</button>
+				<button type="button" ng-click="orderDown(project)" class="btn btn-default">
+					<span class="glyphicon glyphicon glyphicon-arrow-down"></span>
+				</button>
+			</div>
 			<div class="col-md-2">
 				<a href="#/project/{{project._id}}" class="btn btn-success">
 					<span class="glyphicon glyphicon-pencil"></span>
@@ -21,7 +29,10 @@
 
 		<div style="padding:10px;text-align:center;">
 			<button type="button" ng-click="create()" class="btn btn-success">
-				<span class="glyphicon glyphicon-plus"></span>
+				<span class="glyphicon glyphicon-plus"></span> Projet
+			</button>
+			<button type="button" ng-click="saveOrder()" ng-disabled="projectsToSave.length == 0" class="btn btn-primary">
+				<span class="glyphicon glyphicon glyphicon-floppy-disk"></span> Ordre
 			</button>
 		</div>
 	</div>

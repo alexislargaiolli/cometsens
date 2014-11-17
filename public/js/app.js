@@ -10,6 +10,10 @@ projectApp.config(['$routeProvider',
 			templateUrl: '/admin/project.html',
 			controller: 'projectCtrl'
 		}).		
+		when('/carousel', {
+			templateUrl: '/admin/carousel.html',
+			controller: 'carouselCtrl'
+		}).		
 		otherwise({
 			redirectTo: '/projects'
 		});

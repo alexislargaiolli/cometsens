@@ -5,7 +5,7 @@ projectControllers.controller('projectsCtrl', ['$scope', 'Project',
 		$scope.create = function(){
 			//projectService.createProject();
 			var project = new Project();
-			project.name = "Nouveau projet";
+			project.name = "Nouveau projet" + $scope.projects.length;
 			project.description = "";
 			project.links = [];
 			project.slides = [];
@@ -22,6 +22,33 @@ projectControllers.controller('projectsCtrl', ['$scope', 'Project',
 		}
 
 		$scope.projects = Project.query();
+
+		$scope.projectsToSave = [];
+
+		$scope.orderUp = function(project){
+			if(project.order > 0){
+				project.order--;
+				if($scope.projectsToSave.indexOf(project) == -1){
+					$scope.projectsToSave.push(project);
+				}
+			}			
+		}
+
+		$scope.orderDown = function(project){
+			if(project.order < $scope.projects.length){
+				project.order++;
+				if($scope.projectsToSave.indexOf(project) == -1){
+					$scope.projectsToSave.push(project);
+				}
+			}			
+		}
+
+		$scope.saveOrder = function(){
+			angular.forEach($scope.projectsToSave, function(p, key){
+				p.$update();
+			});
+			$scope.projectsToSave = [];
+		}		
 
 	}]);
 projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project',
@@ -54,7 +81,7 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 		}
 
 		$scope.addSlide = function(){
-			var slide = {name : 'Nouveau slide'};
+			var slide = {name : 'Nouveau slide', order: $scope.selectedProject.slides.length};
 			$scope.selectedProject.slides.push(slide);
 		}
 
@@ -71,6 +98,18 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 			$scope.selectedProject.slides.splice(index);
 		}
 
+		$scope.slideOrderUp = function(slide){
+			if(slide.order > 0){
+				slide.order--;				
+			}			
+		}
+
+		$scope.slideOrderDown = function(slide){
+			if(slide.order < $scope.selectedProject.slides.length){
+				slide.order++;
+			}			
+		}
+
 		$scope.setSelectedLink = function(link){
 			$scope.selectedLink = link;
 		}
@@ -84,5 +123,57 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 			var index = $scope.selectedProject.links.indexOf(link);
 			$scope.selectedProject.links.splice(index);
 		}
+
+	}]);
+projectControllers.controller('carouselCtrl', ['$scope', 'CarouselItem',
+	function($scope, CarouselItem){
+		
+		$scope.create = function(){
+			//projectService.createProject();
+			var ci = new CarouselItem();
+			ci.image = "";
+			ci.order = $scope.items.length;
+			ci.$save();
+			$scope.items.push(ci);
+		}
+
+		$scope.save = function(ci){
+			ci.$update();
+		}
+
+		$scope.remove = function(ci){
+			ci.$delete();
+			var index = $scope.items.indexOf(ci);
+			$scope.items.splice(index);
+		}
+
+		$scope.items = CarouselItem.query();
+
+		$scope.itemsToSave = [];
+
+		$scope.orderUp = function(ci){
+			if(ci.order > 0){
+				ci.order--;
+				if($scope.itemsToSave.indexOf(ci) == -1){
+					$scope.itemsToSave.push(ci);
+				}
+			}			
+		}
+
+		$scope.orderDown = function(ci){
+			if(ci.order < $scope.items.length){
+				ci.order++;
+				if($scope.itemsToSave.indexOf(ci) == -1){
+					$scope.itemsToSave.push(ci);
+				}
+			}			
+		}
+
+		$scope.saveOrder = function(){
+			angular.forEach($scope.itemsToSave, function(p, key){
+				p.$update();
+			});
+			$scope.itemsToSave = [];
+		}		
 
 	}]);
