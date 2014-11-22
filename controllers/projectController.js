@@ -1,4 +1,5 @@
 var Project = require('../models/project.js');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 exports.findAll = function(callback) {	
 	Project.find({}).sort('order').exec(function(err, projects) {
@@ -6,9 +7,9 @@ exports.findAll = function(callback) {
 	});
 };
 
-exports.find = function(project_key, callback) {
-	Project.findOne({
-		key : project_key
+exports.find = function(id, callback) {
+	Project.findById({
+		 _id: new ObjectId(id)
 	}, function(err, project) {
 		callback(project);
 	});

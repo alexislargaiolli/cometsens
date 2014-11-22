@@ -31,19 +31,32 @@
 								<div class="page-header">									
 									<h1>Informations <small>du project</small></h1>
 								</div>
-								<div class="input-group" style="width:90%;margin:20px auto;">
-									<span class="input-group-addon">Nom</span>
-									<input type="text" class="form-control" placeholder="Nom" ng-model="selectedProject.name" >
-								</div>
-								<div style="width:90%;margin:20px auto;">
-									<textarea ui-tinymce="tinymceOptions" ng-model="selectedProject.description"></textarea>					
-								</div>
-								<div id="projectImageSlot" class="thumbnail" style="min-height:100px;">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="input-group" style="width:90%;margin:20px auto;">
+											<span class="input-group-addon">Nom</span>
+											<input type="text" class="form-control" placeholder="Nom" ng-model="selectedProject.name" >
+										</div>
+										<div style="width:90%;margin:20px auto;">
+											<textarea ui-tinymce="tinymceOptions" ng-model="selectedProject.description"></textarea>					
+										</div>
+									</div>
+									<div class="col-md-6" style="padding:10px;">
+										<div id="projectImageSlot" class="thumbnail" style="min-height:100px;">
 
-									<alx-file-upload url="uploadedFile" on-upload-finished="setProjectImage()"></alx-file-upload>
-									<img  ng-show="selectedProject.image != null" src="{{selectedProject.image}}" style="width:100%;"/>
+											<div class="input-group" style="margin-bottom:5px;">
+											    <span class="input-group-btn">
+											        <alx-file-upload url="uploadedFile" on-upload-finished="setProjectImage()" style="padding:10px;"></alx-file-upload>
+											    </span>
+											    <input type="text" class="form-control" placeholder="url" ng-model="selectedProject.image" >
+											</div>
 
-								</div>
+											
+											<img ng-show="selectedProject.image != null" ng-src="{{selectedProject.image}}"/>
+											<img ng-show="selectedProject.image == null" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYwLjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+">
+										</div>										
+									</div>
+								</div>												
 								
 							</div>
 							<div role="tabpanel" class="tab-pane" id="links">
@@ -98,8 +111,8 @@
 
 								<div class="row slideItem" ng-repeat="slide in selectedProject.slides | orderBy:'order':false">
 									<div class="col-md-2">
-										<img ng-show="slide.image != null" src="{{slide.image}}" alt="{{slide.name}}" style="width:128px;" >
-										<div ng-show="slide.image == null" style="height:50px;width:128px;background:#eee;"></div>
+										<img ng-show="slide.miniature != null" ng-src="{{slide.miniature}}" style="width:128px;" >
+										<div ng-show="slide.miniature == null" style="height:50px;width:128px;background:#eee;"></div>
 									</div>
 									<div class="col-md-8">
 
@@ -139,11 +152,18 @@
 											<div class="modal-body">
 												<div class="row">
 													<div class="col-md-4">
-														<div id="slideImageSlot" class="thumbnail">
+														<div id="projectImageSlot" class="thumbnail" style="min-height:100px;">
 
-															<alx-file-upload url="uploadedFile" on-upload-finished="setSlideImage()"></alx-file-upload>
-															<img  ng-show="selectedSlide.image != null" src="{{selectedSlide.image}}" style="max-width:100%;max-height:200px;"/>
+															<div class="input-group" style="margin-bottom:5px;">
+															    <span class="input-group-btn">
+															        <alx-file-upload url="uploadedFileMiniature" on-upload-finished="setSlideMiniature()" style="padding:10px;"></alx-file-upload>
+															    </span>
+															    <input type="text" class="form-control" placeholder="url" ng-model="selectedSlide.miniature" >
+															</div>
 
+															
+															<img ng-show="selectedSlide.miniature != null" ng-src="{{selectedSlide.miniature}}"/>
+															<img ng-show="selectedSlide.miniature == null" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYwLjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+">
 														</div>
 													</div>
 													<div class="col-md-8">
@@ -154,7 +174,24 @@
 														<div style="margin-top:20px;">
 															<textarea ui-tinymce="tinymceOptions" ng-model="selectedSlide.description"></textarea>					
 														</div>
-													</div>												
+													</div>										
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div id="projectImageSlot" class="thumbnail" style="min-height:100px;">
+
+															<div class="input-group" style="margin-bottom:5px;">
+															    <span class="input-group-btn">
+															        <alx-file-upload url="uploadedFile" on-upload-finished="setSlideImage()" style="padding:10px;"></alx-file-upload>
+															    </span>
+															    <input type="text" class="form-control" placeholder="url" ng-model="selectedSlide.image" >
+															</div>
+
+															
+															<img ng-show="selectedSlide.image != null" ng-src="{{selectedSlide.image}}"/>
+															<img ng-show="selectedSlide.image == null" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYwLjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+">
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="modal-footer">

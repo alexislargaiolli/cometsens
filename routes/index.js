@@ -4,6 +4,8 @@ var projects = require('../controllers/projectController.js');
 var mailer = require('../controllers/mailer.js');
 var passport = require('passport');
 var CarouselItem = require('../models/carouselItem.js');
+var api = require('../controllers/projectApi.js');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 router.get('/', function(req, res) {
 	CarouselItem.find(function(err, ci) {
@@ -34,8 +36,8 @@ router.get('/realisations', function(req, res) {
 	});
 });
 
-router.get('/realisation/:key', function(req, res) {
-	projects.find(req.params.key, function(project) {
+router.get('/realisation/:id', function(req, res) {
+	projects.find(req.params.id, function(project) {
 		res.render('realisation', {
 			title : 'Réalisation',
 			page : 'realisation',

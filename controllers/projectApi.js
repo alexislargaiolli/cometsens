@@ -63,7 +63,7 @@ exports.updateProject = function(req,res){
 
       if (req.body.name != null) proj.name = req.body.name;
       if (req.body.description != null) proj.description = req.body.description;
-      if (req.body.image != null) proj.images = req.body.image;
+      if (req.body.image != null) proj.image = req.body.image;
       if (req.body.links != null) proj.links  = req.body.links;
       if (req.body.slides != null) proj.slides = req.body.slides;
       if (req.body.order != null) proj.order = req.body.order;

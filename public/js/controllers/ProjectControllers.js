@@ -68,6 +68,8 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 
 		$scope.selectedSlide = null;
 
+		$scope.uploadedFileMiniature = null;
+
 		$scope.selectedLink = null;
 
 		//Save the current selected project
@@ -87,6 +89,10 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 
 		$scope.setSlideImage = function(){
 			$scope.selectedSlide.image = $scope.uploadedFile;	
+		}
+
+		$scope.setSlideMiniature = function(){
+			$scope.selectedSlide.miniature = $scope.uploadedFileMiniature;	
 		}
 
 		$scope.setSelectedSlide = function(slide){
