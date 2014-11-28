@@ -10,10 +10,14 @@
 				<div class="project-item" onclick="document.location='/realisation/<%= projects[i]._id %>';">
 					<img class="project-image" src="<%= projects[i].image %>" />
 					<h2><%= projects[i].name %></h2>
-					<p><%- projects[i].description %></p>
+					<p><% for(var j=0; j < projects[i].links.length; j++) { %>						
+						<a style="margin-right:10px;" target="_blank" class="blue-link" href="http://<%= projects[i].links[j].link %>"><%- projects[i].links[j].link %></a>
+						<% } %>
+					</p>
 				</div>
 			</div>
 			<% if(i%2 != 0){ %> </div> <% } %>
+			<% if(i%2 == 0 && i == projects.length-1){ %> </div> <% } %>
 		<% } %>
 	</div>
 	<%- include footer.ejs %>

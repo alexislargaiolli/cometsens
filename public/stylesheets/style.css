@@ -445,9 +445,13 @@ h1{
 	background-color: #f7f7f7;
 }
 
+.slide-list-item{
+	min-height: 70px;
+}
+
 .slide-list-item:hover{
 	cursor:pointer;
-	background-color: #fff;
+	background-color: #fff;	
 }
 
 .slide-list-item:hover .media-heading{
