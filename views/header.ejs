@@ -5,7 +5,34 @@
 	<title><%= title %></title>
 	<link rel='stylesheet' href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />		
 	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<meta property="og:url" content="https://gamcometsens.herokuapp.com" /> 
+	<meta property="og:title" content="Com \& sens" />
+	<meta property="og:description" content="Com & sens description" /> 
+	<meta property="og:image" content="http://res.cloudinary.com/hjv91zvk6/image/upload/v1416259003/wavch6dprnchu8g9ggd8.jpg" /> 
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1512243245725808',
+      xfbml      : true,
+      version    : 'v2.2'
+    });    
+  };
 
+  function shareOnFacebook(){
+  	FB.ui({
+	  method: 'share',
+	  href: 'https://gamcometsens.herokuapp.com',
+	}, function(response){});
+  }
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 	<nav id="header" class="navbar navbar-default noMargin" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -27,8 +54,7 @@
 					<li class="<% if (page == 'contact') { %>active<% } %>"><a href="/contact">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
-					<li><a id="header-facebook" href="#">fb</a></li>
-					<li><a id="header-viadeo" href="#">vi</a></li>
+					<li><a id="header-facebook" onclick="shareOnFacebook()">f</a></li>
 					<li id="header-bt-contact"><a data-toggle="modal" data-target="#contact-form"><span class="glyphicon glyphicon-pencil"></span>Contacter</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->

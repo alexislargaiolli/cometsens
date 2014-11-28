@@ -1,5 +1,5 @@
-var postmark = require("postmark")('71f80713-5c15-4240-8ea8-bf0dbaa6230b')
-
+//var postmark = require("postmark")('71f80713-5c15-4240-8ea8-bf0dbaa6230b')
+var postmark = require("postmark")(process.env.POSTMARK_API_KEY);
 
 exports.sendMail = function(from, fistName, lastName, content, callback){
     var mailOptions = {

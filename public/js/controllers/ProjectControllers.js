@@ -18,7 +18,7 @@ projectControllers.controller('projectsCtrl', ['$scope', 'Project',
 		$scope.remove = function(project){
 			project.$delete();
 			var index = $scope.projects.indexOf(project);
-			$scope.projects.splice(index);
+			$scope.projects.splice(index, 1);
 		}
 
 		$scope.projects = Project.query();
@@ -101,7 +101,7 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 
 		$scope.removeSlide = function(slide){
 			var index = $scope.selectedProject.slides.indexOf(slide);
-			$scope.selectedProject.slides.splice(index);
+			$scope.selectedProject.slides.splice(index, 1);
 		}
 
 		$scope.slideOrderUp = function(slide){
@@ -127,7 +127,7 @@ projectControllers.controller('projectCtrl', ['$scope','$routeParams', 'Project'
 
 		$scope.removeLink = function(link){
 			var index = $scope.selectedProject.links.indexOf(link);
-			$scope.selectedProject.links.splice(index);
+			$scope.selectedProject.links.splice(index,1);
 		}
 
 	}]);
@@ -150,7 +150,7 @@ projectControllers.controller('carouselCtrl', ['$scope', 'CarouselItem',
 		$scope.remove = function(ci){
 			ci.$delete();
 			var index = $scope.items.indexOf(ci);
-			$scope.items.splice(index);
+			$scope.items.splice(index, 1);
 		}
 
 		$scope.items = CarouselItem.query();

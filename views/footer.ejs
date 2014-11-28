@@ -1,48 +1,76 @@
-
 <div id="footer" class="container-fluid">
-	<div class="col-md-4 alignCenter">
-		<button id="btn-viadeo" type="button" class="btn btn-default btn-lg footer-button">
-			<div class="btn-footer-wrapper left">
-				<span class="icon-vimeo footer-icon"></span>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 alignCenter padding10">
+				<button id="btn-mail" type="button" class="btn btn-default btn-lg footer-button" data-toggle="modal" data-target="#contact-form">
+					<div class="btn-footer-wrapper left">
+						<span class="glyphicon glyphicon-envelope footer-icon"></span>
+					</div>
+					<div class="btn-footer-wrapper right">
+						<div class="big-font">Contacter</div>
+						<div class="small-font">par mail</div>
+					</div>				
+				</button>
 			</div>
-			<div class="btn-footer-wrapper right">
-				<div class="big-font">Visiter</div>
-				<div class="small-font">mon viadeo</div>
-			</div>
+			<div class="col-md-3 visible-xs alignCenter padding10">
+				<button id="btn-facebook" type="button" class="btn btn-default btn-lg footer-button">
+					<div class="btn-footer-wrapper left">
+						<span class="icon-facebook footer-icon"></span>
+					</div>
+					<div class="btn-footer-wrapper right">
+						<div class="big-font">Partager</div>
+						<div class="small-font">sur facebook !</div>
+					</div>
+				</button>
+			</div>		
+			<div class="col-md-6 alignCenter">
+				<div class="hidden-xs" style="margin-top:20px;">
+					<span id="footerLinkWrapper">
+						<a id="footerTelLink" href="tel:0673600875"> 
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+							<span>06 73 60 08 75</span>
+						</a>
 
-		</button>
-	</div>
-	<div class="col-md-4 alignCenter">
-		<button id="btn-mail" type="button" class="btn btn-default btn-lg footer-button">
-			<div class="btn-footer-wrapper left">
-				<span class="glyphicon glyphicon-envelope footer-icon"></span>
+						<a id="footerMailLink" href="mailto:gamdesign@gmail.com">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+							<span>gamdesign@gmail.com</span>
+						</a>
+					</span>
+				</div>
+				<div class="visible-xs" style="margin-top:10px;">
+					<span id="footerLinkWrapper">
+						<div>
+						<a id="footerTelLink" href="tel:0673600875"> 
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+							<span>06 73 60 08 75</span>
+						</a>
+						</div>
+						<div>
+						<a id="footerMailLink" href="mailto:gamdesign@gmail.com">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+							<span>gamdesign@gmail.com</span>
+						</a>
+						</div>
+					</span>
+				</div>
+				<div id="wrapperMention">
+					<a href="#">Mentions légales</a> - <a href="/login">Connexion</a>
+				</div>
 			</div>
-			<div class="btn-footer-wrapper right">
-				<div class="big-font">Contacter</div>
-				<div class="small-font">par mail</div>
-			</div>				
-		</button>
+			<div class="col-md-3 hidden-xs alignCenter padding10">
+				<button id="btn-facebook" type="button" class="btn btn-default btn-lg footer-button" onClick="shareOnFacebook();">
+					<div class="btn-footer-wrapper left">
+						<span class="icon-facebook footer-icon"></span>
+					</div>
+					<div class="btn-footer-wrapper right">
+						<div class="big-font">Partager</div>
+						<div class="small-font">sur facebook !</div>
+					</div>
+				</button>
+			</div>		
+		</div>
 	</div>
-	<div class="col-md-4 alignCenter">
-		<button id="btn-facebook" type="button" class="btn btn-default btn-lg footer-button">
-			<div class="btn-footer-wrapper left">
-				<span class="icon-facebook footer-icon"></span>
-			</div>
-			<div class="btn-footer-wrapper right">
-				<div class="big-font">Partager</div>
-				<div class="small-font">sur facebook !</div>
-			</div>
-		</button>
-	</div>
-	<div class="col-md-4 footerSidesLinkColor alignCenter hMargin10">
-		<a href="#">Mentions légales</a> - <a href="#">Crédits</a>
-	</div>
-	<div class="col-md-4 middle-row footerMiddleLinkColor alignCenter" hMargin10>
-		TEL: <a href="tel:0673600875">06 73 60 08 75</a> | MAIL: <a href="mailto:gamdesign@gmail.com">gamdesign@gmail.com</a>
-	</div>
-	<div class="col-md-4 footerSidesLinkColor alignCenter hMargin10">Gamdesign.fr &copy;2014</div>
 </div>
-
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -54,11 +82,12 @@ $(document).ready(function() {
 });
 function fixFooter() {
 	var $footer = $('#footer');
+	var $mainContainer = $('#main-container');
 	var dh = $(window).height() - $footer.offset().top - $footer.height();		
 	if (dh > 0) {
-		$footer.css('margin-top', dh)
+		$mainContainer.css('padding-bottom', dh)
 	} else {
-		$footer.css('margin-top', '0')
+		$mainContainer.css('padding-bottom', '0')
 	}
 }
 </script>
