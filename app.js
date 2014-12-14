@@ -18,7 +18,7 @@ app.mongoose = require('mongoose');
 require('./models/project.js');
 require('./models/user.js');
 require('./config/passport')(passport);
-
+var faceplate = require('faceplate');
 
 cloudinary.config({ 
   cloud_name: 'hjv91zvk6', 
@@ -41,6 +41,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 app.use(session({secret: 'ssshhhhh'}));
+app.use(faceplate.middleware({
+    app_id: process.env.FACEBOOK_APP_ID,
+    secret: process.env.FACEBOOK_SECRET,
+    scope:  'user_likes'
+}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

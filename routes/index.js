@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var app = require('../app');
 var projects = require('../controllers/projectController.js');
 var mailer = require('../controllers/mailer.js');
 var passport = require('passport');
