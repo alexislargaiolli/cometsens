@@ -63,7 +63,7 @@ router.get('/contact', function(req, res) {
 });
 
 router.post('/contact', function(req, res) {
-	mailer.sendMail(req.body.email, req.body.fistname, req.body.lastname, req.body.content, function(code, msg){
+	mailer.sendMail(req.body.email, req.body.firstname, req.body.lastname, req.body.content, function(code, msg){
 		console.log(code, msg);
 		res.render('contact', {
 			title : 'Contact',

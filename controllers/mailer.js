@@ -4,8 +4,8 @@
 var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 
-exports.sendMail = function(from, fistName, lastName, content, callback){
-    var c = 'Message de ' + fistName + ' ' + lastName + '\n' + content;
+exports.sendMail = function(from, firstName, lastName, content, callback){
+    var c = 'Message de ' + firstName + ' ' + lastName + '\n' + content;
     sendgrid.send({
       to:       from,
       from:     'app31181915@heroku.com',
