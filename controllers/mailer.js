@@ -1,17 +1,27 @@
 //var postmark = require("postmark")('71f80713-5c15-4240-8ea8-bf0dbaa6230b')
-var postmark = require("postmark")(process.env.POSTMARK_API_KEY);
+//var postmark = require("postmark")(process.env.POSTMARK_API_KEY);
+
+var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+
 
 exports.sendMail = function(from, fistName, lastName, content, callback){
-    var mailOptions = {
-        "From": "contact@cometsens.com",
-        "To": "alexis.largaiolli@gmail.com",
-        "Subject": "Contact com&sens",
-        "TextBody": "test",
-        "Tag": "cometsenes"
-    };
-    console.log(mailOptions);
+    sendgrid.send({
+      to:       'alexis.largaiolli@gmail.com',
+      from:     'app31181915@heroku.com',
+      subject:  'Hello World',
+      text:     'My first email through SendGrid.'
+    }, function(error, json) {
+      if(error) {
+            var msg = "Unable to send via postmark: " + error.message;
+            console.error(msg);
+            callback('error', "Une erreur est survenue pendant l'envoi du message...");
+            return;
+        }
+        var msg = "Votre message a bien été envoyé !";
+        callback('success', msg);
+    });
 
-    postmark.send(mailOptions, function(error, success) {
+    /*postmark.send(mailOptions, function(error, success) {
         if(error) {
             var msg = "Unable to send via postmark: " + error.message;
             console.error(msg);
@@ -21,7 +31,7 @@ exports.sendMail = function(from, fistName, lastName, content, callback){
         var msg = "Sent to postmark for delivery";
         console.info(msg);
         callback('success', msg);
-    });
+    });*/
 };
 
 

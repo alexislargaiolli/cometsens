@@ -24,7 +24,6 @@ router.get('/', function(req, res) {
 		});
       }
     });	
-	
 });
 
 router.get('/realisations', function(req, res) {
