@@ -5,11 +5,12 @@ var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.S
 
 
 exports.sendMail = function(from, fistName, lastName, content, callback){
+    var c = 'Message de ' + fistName + ' ' + lastName + '\n' + content;
     sendgrid.send({
-      to:       'alexis.largaiolli@gmail.com',
+      to:       from,
       from:     'app31181915@heroku.com',
-      subject:  'Hello World',
-      text:     'My first email through SendGrid.'
+      subject:  'Message Com & Sens',
+      text:     c
     }, function(error, json) {
       if(error) {
             var msg = "Unable to send via postmark: " + error.message;
