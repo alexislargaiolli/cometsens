@@ -3,7 +3,7 @@
 <%- include header.ejs %>
 <body>
 	<div class="container-fluid noPadding" style="background-color:#fff;">
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" style="position:fixed;z-index:0;width:100%;">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -19,6 +19,7 @@
 			</div>
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 		</div>
+		<div style="margin-top:500px;background-color:#fff;z-index:100;position:relative;">
 		<div class="red-block hidden-xs hidden-sm" style="height:400px;width:50%;position:absolute;">	
 
 		</div>
@@ -28,6 +29,7 @@
 		<div class="red-block hidden-xs hidden-sm" style="height:400px;width:50%;position:absolute;left:50%;margin-top:400px;">	
 
 		</div>
+		
 		<div class="container" style="height:800px;">
 			<a href="/realisations">
 				<div class="hidden-xs hidden-sm">
@@ -92,6 +94,7 @@
 
 				</div>
 			</a>
+			</div>
 		</div>
 	</div>	
 	<%- include footer.ejs %>

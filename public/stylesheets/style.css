@@ -12,7 +12,7 @@
 }
 
 body {
-	padding:0;
+	padding:50px 0 0 0;
 	margin:0;
  	background-color:#e6e6e6;
   	font: 14px Arial, sans-serif;
@@ -91,7 +91,8 @@ h1{
 	background: url('/img/bg-alpha.png');
 	background-repeat: no-repeat;
 	background-position: top center;
-}
+	background-attachment: fixed;
+}F
 
 /* ------ HEADER ----- */
 
@@ -102,6 +103,10 @@ h1{
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #ff4053;
     background-color: transparent;
+}
+
+.header-link:hover a{
+	color:#FF3030!important;
 }
 
 .navbar-brand{
@@ -149,7 +154,7 @@ h1{
 
 #header-bt-contact:hover a{
 	cursor:pointer;
-	background-color:#ff283d;
+	background-color:#FF3030;
 	border-radius: 0;
 }
 
@@ -371,7 +376,6 @@ h1{
 
 #contact-form input, #contact-form textarea{
 	margin-bottom:15px;
-	text-transform: uppercase;
 }
 
 #contact-right button{

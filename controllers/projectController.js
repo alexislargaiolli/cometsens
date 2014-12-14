@@ -10,7 +10,8 @@ exports.findAll = function(callback) {
 exports.find = function(id, callback) {
 	Project.findById({
 		 _id: new ObjectId(id)
-	}, function(err, project) {
+	}, function(err, project) {		
+		project.slides.sort(function(s1, s2){return s1.order - s2.order;});		
 		callback(project);
 	});
 };
@@ -18,7 +19,7 @@ exports.find = function(id, callback) {
 exports.get = function(req, res) {
 	Project.findOne({
 		key : req.params.key
-	}, function(err, project) {
+	}, function(err, project) {		
 		res.send(project);
 	});
 };

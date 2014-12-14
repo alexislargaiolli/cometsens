@@ -5,7 +5,7 @@
 	<title><%= title %></title>
 	<link rel='stylesheet' href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />		
 	<link rel='stylesheet' href='/stylesheets/style.css' />
-	<meta property="og:url" content="https://gamcometsens.herokuapp.com" /> 
+	<meta property="og:url" content="http://gamcometsens.herokuapp.com" /> 
 	<meta property="og:title" content="Com \& sens" />
 	<meta property="og:description" content="Com & sens description" /> 
 	<meta property="og:image" content="http://res.cloudinary.com/hjv91zvk6/image/upload/v1416259003/wavch6dprnchu8g9ggd8.jpg" /> 
@@ -21,7 +21,7 @@
   function shareOnFacebook(){
   	FB.ui({
 	  method: 'share',
-	  href: 'https://gamcometsens.herokuapp.com',
+	  href: 'http://gamcometsens.herokuapp.com',
 	}, function(response){});
   }
 
@@ -29,29 +29,29 @@
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
+     js.src = "//connect.facebook.net/fr_FR/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-	<nav id="header" class="navbar navbar-default noMargin" role="navigation">
+	<nav id="header" class="navbar navbar-default navbar-fixed-top noMargin" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
+			<div class="navbar-header" style="width:180px;">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand <% if (page == 'home') { %>active<% } %>" href="/"></a>
+				<a class="navbar-brand <% if (page == 'home') { %>active<% } %>"  style="width:180px;" href="/"></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="<% if (page == 'realisations' || page == 'realisation') { %>active<% } %>"><a href="/realisations">Réalisations</a></li>
-					<li class="<% if (page == 'presentation') { %>active<% } %>"><a href="/presentation">Présentation</a></li>
-					<li class="<% if (page == 'contact') { %>active<% } %>"><a href="/contact">Contact</a></li>
+					<li class="header-link <% if (page == 'realisations' || page == 'realisation') { %>active<% } %>"><a href="/realisations">Réalisations</a></li>
+					<li class="header-link<% if (page == 'presentation') { %>active<% } %>"><a href="/presentation">Présentation</a></li>
+					<li class="header-link <% if (page == 'contact') { %>active<% } %>"><a href="/contact">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
 					<li><a id="header-facebook" onclick="shareOnFacebook()">f</a></li>
