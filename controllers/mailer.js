@@ -7,7 +7,7 @@ var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.S
 exports.sendMail = function(from, firstName, lastName, content, callback){
     var c = 'Message de ' + firstName + ' ' + lastName + '\n' + content;
     sendgrid.send({
-      to:       'alexis.largaiolli@gmail.com',
+      to:       'web.invent@live.fr',
       from:     from,
       subject:  'Message Com & Sens',
       text:     c
