@@ -13,6 +13,7 @@
     <meta property="og:image" content="http://res.cloudinary.com/hjv91zvk6/image/upload/v1416259003/wavch6dprnchu8g9ggd8.jpg" /> 
     <meta property="og:site_name" content="Com \& Sens" />
     <meta property="fb:app_id" content="1512243245725808" />
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -54,7 +55,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="header-link <% if (page == 'realisations' || page == 'realisation') { %>active<% } %>"><a href="/realisations">Réalisations</a></li>
-					<li class="header-link<% if (page == 'presentation') { %>active<% } %>"><a href="/presentation">Présentation</a></li>
+					<li class="header-link <% if (page == 'presentation') { %>active<% } %>"><a href="/presentation">Présentation</a></li>
 					<li class="header-link <% if (page == 'contact') { %>active<% } %>"><a href="/contact">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
@@ -76,20 +77,47 @@
 				<div class="modal-body">
 					<div id="panel-form-contact" class="panel panel-default">
 						<div class="panel-body">
-							<form id="contact-form">
-								<input type="text" class="form-control" placeholder="Nom" /> <input type="text" class="form-control" placeholder="Prénom" /> <input type="text" class="form-control" placeholder="Votre e-mail" />
-								<textarea class="form-control" rows="6" placeholder="Message"></textarea>
-
+							<form id="contactForm" method="post" action="/contactdlg">
+								<div>
+									<input type="text" name="lastname" class="form-control" placeholder="NOM" requiered /> 
+									<input type="text" name="firstname" class="form-control" placeholder="PRÉNOM" requiered /> 
+									<input type="email" name="email" class="form-control" placeholder="E-MAIL" requiered />
+									<textarea class="form-control" name="content" cols="6" rows="4" placeholder="MESSAGE" requiered></textarea>
+								</div>										
+									
+								<div style="text-align:center;">
+									<button type="submit" class="btn btn-default btn-lg">
+										<span class="glyphicon glyphicon-chevron-right"></span>Envoyer
+									</button>
+								</div>
 							</form>
+							
+						</div>
+						<div class="modal-footer">
+							<div id="response" style="text-align:left;"></div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer" style="text-align: center;">
-					<button type="button" class="btn btn-default btn-lg">
-						<span class="glyphicon glyphicon-chevron-right"></span><span>Envoyer</span>
-					</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$('#contactForm').submit(function (e) {
+	       	e.preventDefault(); // Prevents the page from refreshing
+		    var $this = $(this); // `this` refers to the current form element
+		    $.post(
+		        $this.attr("action"), // Gets the URL to sent the post to
+		        $this.serialize(), // Serializes form data in standard format
+		        function(data) {
+					if(data.code == 'success'){
+						$('#response').html('<div class="alert alert-success" role="alert">'+data.msg+'</div>');
+					}
+					if(data.code == 'error'){
+						$('#response').html('<div class="alert alert-danger" role="alert">'+data.msg+'</div>');
+					}		      		 
+		        },
+		        "json" // The format the response should be in
+		    );
+		});
+	</script>
 </head>

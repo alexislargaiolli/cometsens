@@ -74,6 +74,12 @@ router.post('/contact', function(req, res) {
 	});
 });
 
+router.post('/contactdlg', function(req, res) {
+	mailer.sendMail(req.body.email, req.body.firstname, req.body.lastname, req.body.content, function(code, msg){
+		res.send(200, {code : code, msg : msg});
+	});
+});
+
 
 exports.admin = function(req, res) {
 	
