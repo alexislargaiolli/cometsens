@@ -384,7 +384,7 @@ h1{
 	margin-bottom:15px;
 }
 
-#contact-right button{
+#contact-right button, #contactForm button{
 	background-color: #e5283b;
 	border:none;
 	color:#fff;
