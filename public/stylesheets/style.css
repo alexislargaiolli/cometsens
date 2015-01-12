@@ -171,6 +171,8 @@ h1{
 
 #footer{
 	background:#000;
+	position:relative;
+	z-index: 1000;
 }
 
 .footer-button{
@@ -300,7 +302,7 @@ h1{
 }
 
 .always-visible{
-	z-index: 100;
+	z-index: 1000;
 	position: relative;
 }
 
@@ -474,6 +476,13 @@ h1{
 
 .blue-link{
 	color:#11a3d4;
+}
+
+.btn-next-rea{
+	background-color:#e5283b;
+	text-align:left;
+	color:#fff;
+	border-color: #e5283b;
 }
 
 /* ---------- ICON ----------- */

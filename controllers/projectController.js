@@ -10,9 +10,31 @@ exports.findAll = function(callback) {
 exports.find = function(id, callback) {
 	Project.findById({
 		 _id: new ObjectId(id)
-	}, function(err, project) {		
+	}, function(err, project) {
 		project.slides.sort(function(s1, s2){return s1.order - s2.order;});		
 		callback(project);
+	});
+};
+
+exports.prev = function(order, callback) {
+	Project.find({}).where('order').lt(order).sort('-order').exec(function(err, projects) {
+		if(projects.length > 0){
+			callback(projects[0]);	
+		}
+		else{
+			callback();
+		}
+	});
+};
+
+exports.next = function(order, callback) {
+	Project.find({}).where('order').gt(order).sort('order').exec(function(err, projects) {
+		if(projects.length > 0){
+			callback(projects[0]);
+		}
+		else{
+			callback();
+		}
 	});
 };
 

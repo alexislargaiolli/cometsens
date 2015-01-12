@@ -36,13 +36,36 @@ router.get('/realisations', function(req, res) {
 	});
 });
 
-router.get('/realisation/:id', function(req, res) {
+router.get('/realisation/:id', function(req, res) {	
 	projects.find(req.params.id, function(project) {
-		res.render('realisation', {
-			title : 'Réalisation',
-			page : 'realisation',
-			project : project
-		});
+		projects.prev(project.order, function(prev){
+			projects.next(project.order, function(next){
+				var prevId = null;
+				var nextId = null;
+				if(prev){
+					prevId = prev._id;
+				}				
+				if(next){
+					nextId = next._id;
+				}
+				res.render('realisation', {
+					title : 'Réalisation',
+					page : 'realisation',
+					project : project,
+					prev : prevId,
+					next : nextId
+				});
+				/*if(prev && next){
+					console.log(prev.order + ' - ' + project.order + ' - ' + next.order);	
+				}
+				else if(prev){
+					console.log(prev.order + ' - ' + project.order);			
+				}
+				else if(next){
+					console.log(project.order + ' - ' + next.order);			
+				}*/
+			});			
+		});		
 	});
 });
 

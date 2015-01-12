@@ -5,7 +5,25 @@
 	<div class="container">
 		<div id="panel-realisation" class="panel panel-default" style="min-height:500px;">
 			<div class="panel-body">
-				<h1><%= project.name %></h1>
+				<div class="row">
+					<div class="col-md-6">
+						<h1><%= project.name %></h1>
+						</div>
+					<div class="col-md-6" style="margin-top:20px;text-align:right;">
+						<div>
+							<% if(prev) { %>
+								<a href="/realisation/<%= prev %>" class="btn btn-default btn-lg">
+									<span class="glyphicon glyphicon-chevron-left"></span>
+								</a>
+							<% } %>
+							<% if(next) { %>
+								<a href="/realisation/<%= next %>" class="btn btn-default btn-lg btn-next-rea">
+									Réalisation suivante<span class="glyphicon glyphicon-chevron-right"></span>
+								</a>
+							<% } %>
+						</div>
+					</div>
+				</div>
 				<p><%- project.description %></p>
 				<p>
 					<% project.links.forEach( function (link){ %> <a target="_blank" class="blue-link" href="http://<%= link.link %>"><%= link.link %></a> <% }); %>
@@ -67,6 +85,5 @@
 			$('#current-slide-desc').html(slide.description).css('opacity', '0').animate({opacity:1});
 		}
 	</script>
-	
 </body>
 </html>
