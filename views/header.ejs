@@ -2,9 +2,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta property="og:title" content="Com&Sens - L'image comme essence" />
-	<meta property="og:description" content="Réalisation de sites internet, d'applications mobile (IOS & Androïd), d'identités visuelles, de supports de communication." /> 
-    <meta property="og:url" content="http://www.comessence.net/" />
+	<meta property="og:title" content="Com&Sens - L'image comme essence" />	
+	<meta property="og:site_name" content="Com&Sens - L'image comme essence" />
+	<meta property="og:description" content="Réalisation de sites internet, d'applications mobile (IOS & Androïd), d'identités visuelles" /> 
+	<meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="http://www.comessence.net" />
     <meta property="og:image" content="http://res.cloudinary.com/hjv91zvk6/image/upload/v1416259003/wavch6dprnchu8g9ggd8.jpg" /> 
 
 	<title><%= title %></title>
@@ -12,31 +14,6 @@
 	<link rel='stylesheet' href='/stylesheets/style.css' />	
     <script src="../bower_components/jquery/dist/jquery.js"></script>
 
-	<script>
-
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '1512243245725808',
-	      xfbml      : true,
-	      version    : 'v2.2'
-	    });    
-	  };
-
-	  function shareOnFacebook(){
-	  	FB.ui({
-		  method: 'share',
-		  href: 'http://www.comessence.net',
-		}, function(response){});
-	  }
-
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/fr_FR/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
 	<nav id="header" class="navbar navbar-default navbar-fixed-top noMargin" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -59,7 +36,7 @@
 				</ul>
 				<ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
 					<li><a id="header-facebook" onclick="shareOnFacebook()">f</a></li>
-					<li id="header-bt-contact"><a data-toggle="modal" data-target="#contact-form"><span class="glyphicon glyphicon-pencil"></span>Contacter</a></li>
+					<li id="header-bt-contact"><button class="btn" type="button" data-toggle="modal" data-target="#contact-form"><span class="glyphicon glyphicon-pencil"></span>Contacter</button></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -120,3 +97,30 @@
 		</div>
 	</div>
 </head>
+<body>
+	<div id="fb-root"></div>  
+	<script>
+		function shareOnFacebook(){
+	  	FB.ui({
+		  method: 'share',
+		  href: 'http://www.comessence.net',
+		}, function(response){});
+	  }
+
+
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1512243245725808',
+	      xfbml      : true,
+	      version    : 'v2.2'
+	    });
+	  };
+
+	 (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/fr_FR/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>

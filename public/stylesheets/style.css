@@ -144,18 +144,15 @@ h1{
 	cursor:pointer;	
 }
 
-#header-bt-contact{
+#header-bt-contact button{
 	background-color:#ff4053;	
-}
-
-#header-bt-contact:hover{
-	background-color:#fff;	
-}
-
-#header-bt-contact:hover a{
-	cursor:pointer;
-	background-color:#FF3030;
+	color:#fff;
+	padding:15px;
 	border-radius: 0;
+}
+
+#header-bt-contact button:hover{
+	background-color:#FF3030;
 }
 
 #header-bt-contact a{
