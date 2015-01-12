@@ -475,11 +475,19 @@ h1{
 	color:#11a3d4;
 }
 
+.btn-prev-rea{
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 22px;
+}
+
 .btn-next-rea{
 	background-color:#e5283b;
 	text-align:left;
 	color:#fff;
 	border-color: #e5283b;
+	font-size: 15px;
+	font-weight: normal;
 }
 
 /* ---------- ICON ----------- */
