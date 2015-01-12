@@ -2,12 +2,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta property="og:title" content="Com&Sens - L'image comme essence" />	
-	<meta property="og:site_name" content="Com&Sens - L'image comme essence" />
+	<meta property="og:title" content="Com & Sens - L'image comme essence" />	
+	<meta property="og:site_name" content="Com & Sens - L'image comme essence" />
 	<meta property="og:description" content="Réalisation de sites internet, d'applications mobile (IOS & Androïd), d'identités visuelles" /> 
 	<meta property="og:locale" content="fr_FR" />
     <meta property="og:url" content="http://www.comessence.net" />
     <meta property="og:image" content="http://res.cloudinary.com/hjv91zvk6/image/upload/v1416259003/wavch6dprnchu8g9ggd8.jpg" /> 
+    <meta property="fb:app_id" content="1512243245725808" />
 
 	<title><%= title %></title>
 	<link rel='stylesheet' href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />		
@@ -105,13 +106,13 @@
 		  method: 'share',
 		  href: 'http://www.comessence.net',
 		}, function(response){});*/
-FB.ui({
-  method: 'share_open_graph',
-  action_type: 'og.likes',
-  action_properties: JSON.stringify({
-      object:'http://www.comessence.net',
-  })
-}, function(response){});
+		FB.ui({
+		  method: 'share_open_graph',
+		  action_type: 'og.likes',
+		  action_properties: JSON.stringify({
+		      object:'http://www.comessence.net',
+		  })
+		}, function(response){});
 	  }
 
 
