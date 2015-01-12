@@ -101,10 +101,17 @@
 	<div id="fb-root"></div>  
 	<script>
 		function shareOnFacebook(){
-	  	FB.ui({
+	  /*	FB.ui({
 		  method: 'share',
 		  href: 'http://www.comessence.net',
-		}, function(response){});
+		}, function(response){});*/
+FB.ui({
+  method: 'share_open_graph',
+  action_type: 'og.likes',
+  action_properties: JSON.stringify({
+      object:'https://developers.facebook.com/docs/',
+  })
+}, function(response){});
 	  }
 
 
