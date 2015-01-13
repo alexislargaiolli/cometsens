@@ -36,7 +36,7 @@
 					<div class="col-md-4">
 						<ul class="media-list">
 							<% project.slides.forEach( function (slide){ %>
-							<li class="media slide-list-item" onclick='javascript:selectSlide(<%= slide.order %>);'>
+							<li class="media slide-list-item" onclick='selectSlide(<%=slide.order %>);'>
 							<a class="pull-left" href="#"> <img style="width: 128px; height: 72px;padding:2px;" class="media-object img-thumbnail" src="<%= slide.miniature %>">
 							</a>
 								<div class="media-body">
@@ -59,30 +59,29 @@
 
 	<%- include footer.ejs %>
 	
-	<script>
+	<script type="text/javascript">
 		var currentProject = <%- JSON.stringify(project) %>;
 		var tmp = <%- JSON.stringify(project.slides) %>;
 		var slides = [];
 		var i = 0;
+		var selectSlide;
 		
 		for(i=0; i<tmp.length;++i){			
 			slides[tmp[i].order] = tmp[i]; 
 		}
-	</script>
-	<script type="text/javascript">
+
 		$(document).ready(function() {
 			$('#current-slide-img').click(function(){
 				$('#viewer').modal('show');
 			});
+			selectSlide = function(iSlide){
+				var slide = slides[iSlide];			
+				$('#current-slide-img-view').attr('src',slide.image);
+				$('#current-slide-img').attr('src',slide.image).css('opacity', '0').animate({opacity:1});
+				$('#current-slide-title').html(slide.name).css('opacity', '0').animate({opacity:1});
+				$('#current-slide-desc').html(slide.description).css('opacity', '0').animate({opacity:1});
+			}
 		});
-		
-		function selectSlide(iSlide){
-			var slide = slides[iSlide];			
-			$('#current-slide-img-view').attr('src',slide.image);
-			$('#current-slide-img').attr('src',slide.image).css('opacity', '0').animate({opacity:1});
-			$('#current-slide-title').html(slide.name).css('opacity', '0').animate({opacity:1});
-			$('#current-slide-desc').html(slide.description).css('opacity', '0').animate({opacity:1});
-		}
 	</script>
 </body>
 </html>
